@@ -1,14 +1,16 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Dominio.Models
 {
-    public class Area
+    public class Area:BaseEntity
     {
-    public int Id { get; set; }
+    [MaxLength(50)]
     public string NombreArea { get; set; } = null!;
+    [MaxLength(100)]
     public string ? Descripcion { get; set; }
     public ICollection<Salon> Salones { get; set; } = new List<Salon>();
     }

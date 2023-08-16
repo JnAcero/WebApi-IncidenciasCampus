@@ -1,20 +1,25 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Dominio.Models
 {
-    public class Incidencia
+    public class Incidencia:BaseEntity
     {
-        public int Id { get; set; }
+       
         public int GravedadIncidenciaId { get; set; }
+        [ForeignKey("GravedadIncidenciaId")]
         public GravedadIncidencia GravedadIncidenciaIncidencia { get; set; } = null!;
         public int EquipoId { get; set; }
+        [ForeignKey("EquipoId")]
         public Equipo Equipo { get; set; } = null!;
         public int CategoriaId { get; set; }
+         [ForeignKey("CategoriaId")]
         public CategoriaIncidencia CategoriaIncidencia { get; set; } = null!;
-        public int IdTrainer { get; set; }
+        public int TrainerId { get; set; }
+         [ForeignKey("TrainerId")]
         public Trainer Trainer { get; set; } = null!;
         public string? Descripcion { get; set; }
         public DateTime FechaReporte { get; set; }
