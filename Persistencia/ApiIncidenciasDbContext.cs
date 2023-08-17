@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Dominio.Models;
 using Microsoft.EntityFrameworkCore;
+using Persistencia.Seeding;
 
 namespace Persistencia
 {
@@ -17,6 +18,8 @@ namespace Persistencia
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            
+            SeedingInicial.Seed(modelBuilder);
         }
         public DbSet<Area> Areas => Set<Area>();
         public DbSet<CategoriaIncidencia> CategoriasIncidencias => Set<CategoriaIncidencia>();

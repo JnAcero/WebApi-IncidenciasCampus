@@ -1,0 +1,53 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using AutoMapper;
+using Dominio.Models;
+using Dominio.Interfaces;
+using IncidenciasApi.DTOS;
+using Microsoft.AspNetCore.Mvc;
+using IncidenciasApi.Helpers;
+
+namespace IncidenciasApi.Controllers
+{
+    [ApiController]
+    [Route("api/controller/trainer")]
+    public class TrainerController : ControllerBase
+    {
+        private readonly IUnitOfWork _unitOfWork;
+         private readonly IMapper _mapper;
+
+        public TrainerController(IUnitOfWork unitOfWork,IMapper mapper)
+        {
+            _mapper = mapper;
+            _unitOfWork = unitOfWork;
+        }
+
+        [HttpPost]   
+        public async Task<ActionResult> PostTrainer(TrainerCreationDTO trainerDto)
+        {
+            var Trainer = _mapper.Map<Trainer>(trainerDto);
+            _unitOfWork.Trainers.Add(Trainer);
+            await _unitOfWork.Save();
+            return Ok();
+        }
+        [HttpPost("varios")]
+        public async Task<ActionResult> PostTrainers (TrainerCreationDTO[] trainersDto)
+        {
+            try{
+            var trainers = _mapper.Map<Trainer[]>(trainersDto);
+            _unitOfWork.Trainers.AddRange(trainers);
+            await _unitOfWork.Save();
+            return Ok();
+            }
+            catch(Exception ex){
+                var response = new ErrorMessage(){
+                    Message = "Ha ocurrido un problema con la creacion de las entidades",
+                    ErrorCode = 500
+                };
+                return StatusCode(500, response);        
+            }
+        }
+    }
+}

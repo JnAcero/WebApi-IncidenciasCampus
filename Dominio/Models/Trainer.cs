@@ -9,7 +9,8 @@ namespace Dominio.Models
     public class Trainer:BaseEntity
     {
         public string NumDocumento { get; set; } =null!;
-        public string Nombre { get; set; } = null!;
+        public string Nombres { get; set; } = null!;
+        public string Apellidos { get; set; } = null!;
         public string Genero { get; set; } = null!;
         public string Direccion { get; set; } = null!;
         public DateTime FechaNacimineto { get; set; }

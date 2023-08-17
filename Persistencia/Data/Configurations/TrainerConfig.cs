@@ -16,7 +16,9 @@ namespace Persistencia.Data.Configurations
             .IsRequired();
             builder.Property(x => x.NumDocumento).HasMaxLength(50)
             .IsRequired();
-            builder.Property(x => x.Nombre).HasMaxLength(50)
+            builder.Property(x => x.Nombres).HasMaxLength(50)
+            .IsRequired();
+             builder.Property(x => x.Apellidos).HasMaxLength(50)
             .IsRequired();
             builder.Property(x => x.Genero).HasMaxLength(50)
             .IsRequired();

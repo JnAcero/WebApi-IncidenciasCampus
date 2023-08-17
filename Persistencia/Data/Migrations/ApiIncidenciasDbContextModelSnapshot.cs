@@ -74,6 +74,32 @@ namespace Persistencia.Data.Migrations
                     b.HasIndex("DptoId");
 
                     b.ToTable("Ciudades");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DptoId = 1,
+                            Nombre = "Bucaramanga"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DptoId = 1,
+                            Nombre = "Floridablanca"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DptoId = 1,
+                            Nombre = "Giron"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            DptoId = 1,
+                            Nombre = "Piedecuesta"
+                        });
                 });
 
             modelBuilder.Entity("Dominio.Models.ComponenteHardware", b =>
@@ -163,6 +189,14 @@ namespace Persistencia.Data.Migrations
                     b.HasIndex("PaisId");
 
                     b.ToTable("Dptos");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Nombre = "Santander",
+                            PaisId = 1
+                        });
                 });
 
             modelBuilder.Entity("Dominio.Models.EmailTrainer", b =>
@@ -350,6 +384,13 @@ namespace Persistencia.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Paises");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Nombre = "Colombia"
+                        });
                 });
 
             modelBuilder.Entity("Dominio.Models.Salon", b =>
@@ -435,6 +476,18 @@ namespace Persistencia.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TiposEmail");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Tipo = "Email Personal"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Tipo = "Email Empresarial"
+                        });
                 });
 
             modelBuilder.Entity("Dominio.Models.TipoHardware", b =>
@@ -483,6 +536,18 @@ namespace Persistencia.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TiposTelefono");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 2,
+                            Tipo = "Telefono empresarial"
+                        },
+                        new
+                        {
+                            Id = 1,
+                            Tipo = "Telefono personal"
+                        });
                 });
 
             modelBuilder.Entity("Dominio.Models.Trainer", b =>
@@ -490,6 +555,11 @@ namespace Persistencia.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    b.Property<string>("Apellidos")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<int>("CiudadId")
                         .HasColumnType("int");
@@ -507,7 +577,7 @@ namespace Persistencia.Data.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
 
-                    b.Property<string>("Nombre")
+                    b.Property<string>("Nombres")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
