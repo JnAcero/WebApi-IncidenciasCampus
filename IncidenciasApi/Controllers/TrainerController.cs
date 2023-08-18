@@ -13,15 +13,10 @@ namespace IncidenciasApi.Controllers
 {
     [ApiController]
     [Route("api/controller/trainer")]
-    public class TrainerController : ControllerBase
+    public class TrainerController : BaseApiController
     {
-        private readonly IUnitOfWork _unitOfWork;
-         private readonly IMapper _mapper;
-
-        public TrainerController(IUnitOfWork unitOfWork,IMapper mapper)
+        public TrainerController(IUnitOfWork unitOfWork, IMapper mapper) : base(unitOfWork, mapper)
         {
-            _mapper = mapper;
-            _unitOfWork = unitOfWork;
         }
 
         [HttpPost]   

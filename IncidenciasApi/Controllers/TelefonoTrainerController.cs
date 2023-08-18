@@ -8,17 +8,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace IncidenciasApi.Controllers
 {
-     [ApiController]
+    [ApiController]
     [Route("api/controller/trainer/telefonos")]
-    public class TelefonoTrainerController
+    public class TelefonoTrainerController : BaseApiController
     {
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IMapper _mapper;
-        public TelefonoTrainerController(IUnitOfWork unitOfWork, IMapper mapper)
+        public TelefonoTrainerController(IUnitOfWork unitOfWork, IMapper mapper) : base(unitOfWork, mapper)
         {
-            _mapper = mapper;
-            _unitOfWork = unitOfWork;
         }
-        
     }
 }

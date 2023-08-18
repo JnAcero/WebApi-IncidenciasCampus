@@ -13,15 +13,12 @@ namespace IncidenciasApi.Controllers
 {
     [ApiController]
     [Route("api/controller/trainer/emails")]
-    public class EmailTrainerController : ControllerBase
+    public class EmailTrainerController : BaseApiController
     {
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IMapper _mapper;
-        public EmailTrainerController(IUnitOfWork unitOfWork, IMapper mapper)
+        public EmailTrainerController(IUnitOfWork unitOfWork, IMapper mapper) : base(unitOfWork, mapper)
         {
-            _mapper = mapper;
-            _unitOfWork = unitOfWork;
         }
+
         [HttpPost("varios")]
         public async Task<ActionResult> PostEmails(EmailTrainerCreationDTO[] emailsTrainerDtos)
         {
