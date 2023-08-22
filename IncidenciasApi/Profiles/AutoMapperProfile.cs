@@ -17,6 +17,25 @@ namespace IncidenciasApi.Perfiles
             .ForMember(x =>x.Apellido , t =>t.MapFrom(src =>src.Apellidos))
             .ReverseMap();
             CreateMap<EmailTrainer,EmailTrainerCreationDTO>().ReverseMap();
+            CreateMap<TelefonoTrainer,TelefonoTrainerCreationDTO>().ReverseMap();
+            CreateMap<Salon,SalonCreationDTO>().ReverseMap();
+            CreateMap<IncidenciaHardwareCreationDTO,Incidencia>()
+            .ForMember(x =>x.GravedadIncidenciaId,opt=>opt.MapFrom(src =>src.GravedadIncidenciaId))
+             .ForMember(x =>x.TrainerId,opt=>opt.MapFrom(src =>src.TrainerId))
+              .ForMember(x =>x.CategoriaId,opt=>opt.MapFrom(src =>src.CategoriaId))
+               .ForMember(x =>x.EquipoId,opt=>opt.MapFrom(src =>src.EquipoId))
+                .ForMember(x =>x.FechaReporte,opt=>opt.MapFrom(src =>src.FechaReporte))
+                 .ForMember(x =>x.IncidenciasComponentesH,opt=>opt.Ignore())
+            .ReverseMap();
+            CreateMap<IncidenciaComponenteH,IncidenciaHardwareCreationDTO>().ReverseMap();
+            CreateMap<IncidenciaComponenteH,ComponenteHardware>().ReverseMap();
+            CreateMap<Equipo,EquipoCreationDTO>().ReverseMap();
+            CreateMap<ComponenteHardware,CompHardwareCreationDTO>().ReverseMap();
+            CreateMap<IncidenciaSoftwareCreationDTO,Incidencia>()
+            .ForMember(x => x.IncidenciasComponentesH,opt =>opt.Ignore())
+            .ForMember(x => x.IncidenciasSoftwares,opt =>opt.Ignore())
+            .ReverseMap();
+            CreateMap<SoftwareEquipoCreationDTO,EquipoSoftware>().ReverseMap();
 
         }
     }

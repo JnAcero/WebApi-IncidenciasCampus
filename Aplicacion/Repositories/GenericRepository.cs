@@ -19,7 +19,7 @@ namespace Aplicacion.Repositories
 
         public void Add(T entity)
         {
-            _context.Add(entity);
+            _context.Add(entity); 
         }
 
         public void AddRange(IEnumerable<T> entities)

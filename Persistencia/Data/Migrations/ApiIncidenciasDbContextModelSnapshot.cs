@@ -37,6 +37,26 @@ namespace Persistencia.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Areas");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 3,
+                            Descripcion = "Area donde se dan las clases de progrmacion",
+                            NombreArea = "Area de Training"
+                        },
+                        new
+                        {
+                            Id = 1,
+                            Descripcion = "Zona de estudio personal al lado de hunters",
+                            NombreArea = "Review 1"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Descripcion = "Zona de estudio personal al lado de training",
+                            NombreArea = "Review 2"
+                        });
                 });
 
             modelBuilder.Entity("Dominio.Models.CategoriaIncidencia", b =>
@@ -53,6 +73,18 @@ namespace Persistencia.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("CategoriasIncidencias");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Categoria = "Software"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Categoria = "Hardware"
+                        });
                 });
 
             modelBuilder.Entity("Dominio.Models.Ciudad", b =>
@@ -287,6 +319,23 @@ namespace Persistencia.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("GravedadesIncidencias");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Gravedad = "Leve"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Gravedad = "Moderada"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Gravedad = "Grave"
+                        });
                 });
 
             modelBuilder.Entity("Dominio.Models.Incidencia", b =>
@@ -504,6 +553,33 @@ namespace Persistencia.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TiposHardware");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            NombreHardware = "Teclado"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            NombreHardware = "Mouse"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            NombreHardware = "Pantalla"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            NombreHardware = "Diadema"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            NombreHardware = "CPU"
+                        });
                 });
 
             modelBuilder.Entity("Dominio.Models.TipoSoftware", b =>
@@ -520,6 +596,28 @@ namespace Persistencia.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TipoSoftware");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 2,
+                            Tipo = "Aplicacion"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Tipo = "Gestion"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Tipo = "Programacion"
+                        },
+                        new
+                        {
+                            Id = 1,
+                            Tipo = "Sistema"
+                        });
                 });
 
             modelBuilder.Entity("Dominio.Models.TipoTelefono", b =>

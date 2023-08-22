@@ -12,6 +12,9 @@ namespace Dominio.Interfaces
         IComponenteHIncidencia ComponentesHIncidencias { get; }
         IEmailTrainer EmailsTrainers { get; }
         ITelefonoTrainer TelefonosTrainers { get; }
+        ISalon Salones { get; }
+        IEquipo Equipos { get; }
+        IEquipoSoftware EquiposSoftwares { get; }
         Task<int> Save ();
     }
 

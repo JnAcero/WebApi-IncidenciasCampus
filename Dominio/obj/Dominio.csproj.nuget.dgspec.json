@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj": {}
+    "c:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj": {
+    "c:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj",
+        "projectUniqueName": "c:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj",
         "projectName": "Dominio",
-        "projectPath": "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj",
+        "projectPath": "c:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj",
         "packagesPath": "C:\\Users\\Juan Acero\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Dominio\\obj\\",
+        "outputPath": "c:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Dominio\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Juan Acero\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -22,8 +22,9 @@ namespace IncidenciasApi.Controllers
         [HttpPost]   
         public async Task<ActionResult> PostTrainer(TrainerCreationDTO trainerDto)
         {
-            var Trainer = _mapper.Map<Trainer>(trainerDto);
-            _unitOfWork.Trainers.Add(Trainer);
+            var trainer = _mapper.Map<Trainer>(trainerDto);
+            var Id = trainer.Id;
+            _unitOfWork.Trainers.Add(trainer);
             await _unitOfWork.Save();
             return Ok();
         }
