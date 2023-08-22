@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistencia;
 
@@ -10,9 +11,11 @@ using Persistencia;
 namespace Persistencia.Data.Migrations
 {
     [DbContext(typeof(ApiIncidenciasDbContext))]
-    partial class ApiIncidenciasDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230822123057_DataSoftware")]
+    partial class DataSoftware
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -464,29 +467,6 @@ namespace Persistencia.Data.Migrations
                     b.HasIndex("AreaId");
 
                     b.ToTable("Salones");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AreaId = 3,
-                            CantidadEquipos = 25,
-                            NombreSalon = "Apolo"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AreaId = 3,
-                            CantidadEquipos = 25,
-                            NombreSalon = "Sputnik"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            AreaId = 3,
-                            CantidadEquipos = 25,
-                            NombreSalon = "Artemis"
-                        });
                 });
 
             modelBuilder.Entity("Dominio.Models.Software", b =>

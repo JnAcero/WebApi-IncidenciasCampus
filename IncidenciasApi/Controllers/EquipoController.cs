@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace IncidenciasApi.Controllers
 {
-[ApiController]
+    [ApiController]
     [Route("api/controller/equipos")]
     public class EquipoController : BaseApiController
     {
@@ -25,5 +25,23 @@ namespace IncidenciasApi.Controllers
             await _unitOfWork.Save();
             return Ok(equipos);
         }
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<EquipoDto>>> GetEquiposDtos()
+        {
+            var equipos = await _unitOfWork.Equipos.GetAllAsync();
+            var equiposDtos =  equipos.Select(x => new EquipoDto
+            {
+                Id = x.Id,
+                Codigo = x.Codigo,
+                FechaActualizacion = x.FechaActualizacion,
+                SistemaOperativo = x.SistemaOperativo,
+                EspecificacionesTecnicas = x.EspecificacionesTecnicas,
+                SalonId = x.SalonId,
+                Salon = x.Salon != null ? x.Salon.NombreSalon : "Sin información"
+            }).ToList();
+          
+             return Ok(equiposDtos);
+        }
+
     }
 }

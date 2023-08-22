@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace IncidenciasApi.Controllers
 {
     [ApiController]
-    [Route("api/controller/IncidenciaHarware")]
+    [Route("api/controller/IncidenciaHardware")]
     public class IncidenciaHardwareController : BaseApiController
     {
         public IncidenciaHardwareController(IUnitOfWork unitOfWork, IMapper mapper) : base(unitOfWork, mapper)
@@ -46,6 +46,15 @@ namespace IncidenciasApi.Controllers
                     await _unitOfWork.Save();
                 }         
                 return Ok();
+        }
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Incidencia>>> GetAllIncidencias()
+        {
+            var incidencias = await _unitOfWork.Incidencias.GetIncidenciasHardware();
+            if(incidencias is null){
+                return NotFound();
+            }
+            return Ok(incidencias);
         }
 
     }

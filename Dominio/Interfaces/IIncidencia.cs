@@ -8,6 +8,7 @@ namespace Dominio.Interfaces
 {
     public interface IIncidencia:IGenericRepository<Incidencia>
     {
-        
+         Task<IEnumerable<Incidencia>> GetIncidenciasHardware();
+        Task<IEnumerable<Incidencia>> GetIncidenciasSoftware();
     }
 }
