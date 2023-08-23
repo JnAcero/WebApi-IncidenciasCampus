@@ -19,7 +19,7 @@ namespace IncidenciasApi.Controllers
         }
         [HttpPost("varios")]
         public async Task<ActionResult> PostSoftwaresEquipos(SoftwareEquipoCreationDTO[] softwaresEquiposDtos)
-        {
+        { 
             var softwaresEquipos = _mapper.Map<EquipoSoftware[]>(softwaresEquiposDtos);
             _unitOfWork.EquiposSoftwares.AddRange(softwaresEquipos);
             await _unitOfWork.Save();
