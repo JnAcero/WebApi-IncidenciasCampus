@@ -38,6 +38,16 @@ namespace IncidenciasApi.Controllers
             return Ok();
 
         }
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Incidencia>>> GetIncidenciasSoftware()
+        {
+            var incidencias = await _unitOfWork.Incidencias.GetIncidenciasSoftware();
+            if(incidencias is null)
+            {
+                return NotFound();
+            }
+            return Ok(incidencias);
+        }
         
     }
 }

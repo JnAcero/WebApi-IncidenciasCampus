@@ -11,7 +11,7 @@ namespace Aplicacion.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {
-        private readonly ApiIncidenciasDbContext _context;
+        protected ApiIncidenciasDbContext _context;
         public GenericRepository(ApiIncidenciasDbContext context)
         {
           _context = context;

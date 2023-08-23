@@ -134,7 +134,7 @@ namespace Persistencia.Seeding
                 TipoSofwareId = aplicacion.Id
                };
                 var Chrome = new Software(){
-                Id=1,
+                Id=3,
                 Nombre = "Chrome",
                 Descripcion ="Navegador web",
                 TipoSofwareId = Programacion.Id
@@ -161,6 +161,30 @@ namespace Persistencia.Seeding
                };
                 modelBuilder.Entity<GravedadIncidencia>().HasData(leve,moderada,grave);
                  modelBuilder.Entity<CategoriaIncidencia>().HasData(cat_softwarwe,cat_Hardware);      
+                 modelBuilder.Entity<Software>().HasData(netcore,Chrome,discord);     
+
+                 var apolo = new Salon(){
+                    Id=1,
+                    NombreSalon = "Apolo",
+                    CantidadEquipos = 25,
+                    AreaId = training.Id
+                    
+                 };
+                 var Sputnik = new Salon(){
+                    Id=2,
+                    NombreSalon = "Sputnik",
+                    CantidadEquipos = 25,
+                    AreaId = training.Id
+                    
+                 };
+                 var Artemis = new Salon(){
+                    Id=3,
+                    NombreSalon = "Artemis",
+                    CantidadEquipos = 25,
+                    AreaId = training.Id
+                    
+                 };
+                 modelBuilder.Entity<Salon>().HasData(apolo,Sputnik,Artemis); 
         }
 
     }
