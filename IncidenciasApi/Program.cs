@@ -3,16 +3,20 @@ using System.Text.Json.Serialization;
 using IncidenciasApi.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Persistencia;
+using AspNetCoreRateLimit;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
 // Add services to the container.
 builder.Services.ConfigCores();
 builder.Services.AddControllers();
 builder.Services.AddAplicationServices();
+builder.Services.ConfigureRateLimiting();
+builder.Services.ConfigureApiVersioning();
 builder.Services.AddControllers()
     .AddJsonOptions(options => options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApiIncidenciasDbContext>(options =>
@@ -31,6 +35,7 @@ if (app.Environment.IsDevelopment())
 }
 app.UseCors("CorsPolicy");
 app.UseHttpsRedirection();
+app.UseIpRateLimiting();
 
 app.UseAuthorization();
 

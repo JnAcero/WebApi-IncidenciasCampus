@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace IncidenciasApi.Controllers
 {
     [ApiController]
-    [Route("api/controller/trainer/emails")]
+    //[Route("api/controller/trainer/emails")]
     public class EmailTrainerController : BaseApiController
     {
         public EmailTrainerController(IUnitOfWork unitOfWork, IMapper mapper) : base(unitOfWork, mapper)

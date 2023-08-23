@@ -100,7 +100,7 @@ namespace Aplicacion.UnitOfWork
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _context.Dispose();
         }
 
         public Task<int> Save()

@@ -12,7 +12,7 @@ using IncidenciasApi.Helpers;
 namespace IncidenciasApi.Controllers
 {
     [ApiController]
-    [Route("api/controller/trainer")]
+   // [Route("api/controller/trainer")]
     public class TrainerController : BaseApiController
     {
         public TrainerController(IUnitOfWork unitOfWork, IMapper mapper) : base(unitOfWork, mapper)

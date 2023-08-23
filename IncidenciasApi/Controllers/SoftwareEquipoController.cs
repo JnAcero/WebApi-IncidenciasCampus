@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace IncidenciasApi.Controllers
 {
     [ApiController]
-    [Route("api/controller/EquipoSoftware")]
+   // [Route("api/controller/EquipoSoftware")]
     public class SoftwareEquipoController : BaseApiController
     {
         public SoftwareEquipoController(IUnitOfWork unitOfWork, IMapper mapper) : base(unitOfWork, mapper)

@@ -8,7 +8,7 @@ using IncidenciasApi.Helpers;
 namespace IncidenciasApi.Controllers
 {
     [ApiController]
-    [Route("api/controller/salones")]
+    //[Route("api/controller/salones")]
     public class SalonController : BaseApiController
     {
         public SalonController(IUnitOfWork unitOfWork, IMapper mapper) : base(unitOfWork, mapper)

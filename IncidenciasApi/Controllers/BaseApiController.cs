@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace IncidenciasApi.Controllers
 {
     [ApiController]
-    [Route("api/controller")]
+    [Route("api/incidencias/[controller]")]
     public class BaseApiController : ControllerBase
     {
         protected IUnitOfWork _unitOfWork;

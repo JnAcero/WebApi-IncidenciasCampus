@@ -29,7 +29,7 @@ namespace Aplicacion.Repositories
 
         public IEnumerable<T> Find(Expression<Func<T, bool>> expression)
         {
-            throw new NotImplementedException();
+             return _context.Set<T>().Where(expression);
         }
 
         public virtual Task<IEnumerable<T>> GetAllAsync()

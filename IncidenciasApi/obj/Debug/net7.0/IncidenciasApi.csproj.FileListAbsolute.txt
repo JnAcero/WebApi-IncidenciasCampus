@@ -223,3 +223,5 @@ C:/Users/Juan Acero/Documents/Campus/WebApi-IncidenciasCampus/IncidenciasApi/obj
 /home/apolM01-060/Desktop/WebApi-IncidenciasCampus/IncidenciasApi/obj/Debug/net7.0/IncidenciasApi.pdb
 /home/apolM01-060/Desktop/WebApi-IncidenciasCampus/IncidenciasApi/obj/Debug/net7.0/IncidenciasApi.genruntimeconfig.cache
 /home/apolM01-060/Desktop/WebApi-IncidenciasCampus/IncidenciasApi/obj/Debug/net7.0/ref/IncidenciasApi.dll
+/home/apolM01-060/Desktop/WebApi-IncidenciasCampus/IncidenciasApi/bin/Debug/net7.0/AspNetCoreRateLimit.dll
+/home/apolM01-060/Desktop/WebApi-IncidenciasCampus/IncidenciasApi/bin/Debug/net7.0/Microsoft.AspNetCore.Mvc.Versioning.dll

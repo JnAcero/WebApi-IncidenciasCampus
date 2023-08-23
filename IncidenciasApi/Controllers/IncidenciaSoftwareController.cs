@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace IncidenciasApi.Controllers
 {
     [ApiController]
-    [Route("api/controller/IncidenciaSoftware")]
+   // [Route("api/controller/IncidenciaSoftware")]
     public class IncidenciaSoftwareController : BaseApiController
     {
         public IncidenciaSoftwareController(IUnitOfWork unitOfWork, IMapper mapper) : base(unitOfWork, mapper)
@@ -48,6 +48,16 @@ namespace IncidenciasApi.Controllers
             }
             return Ok(incidencias);
         }
-        
+        [HttpGet("getById/{id:int}")]
+        public async Task<ActionResult<Incidencia>> GetIncidenciaSoftwareById(int id)
+        {
+            var incidencia = await _unitOfWork.Incidencias.GetIncidenciasSoftwareById(id);
+            if(incidencia is null)
+            {
+                return NotFound();
+            }
+            return Ok(incidencia);
+        }
+         
     }
 }

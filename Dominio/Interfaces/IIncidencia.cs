@@ -10,5 +10,11 @@ namespace Dominio.Interfaces
     {
          Task<IEnumerable<Incidencia>> GetIncidenciasHardware();
         Task<IEnumerable<Incidencia>> GetIncidenciasSoftware();
+       Task<Incidencia> GetIncidenciaById(int id);
+        Task<Incidencia> GetIncidenciaHardwareById(int id);
+        Task<Incidencia> GetIncidenciasSoftwareById(int id);
+        Task<IEnumerable<Incidencia>> GetIncidenciasByIdTrainer(int id);
+        Task<IEnumerable<Incidencia>> GetIncideciasByIdSalon(int id);
+        
     }
 }
