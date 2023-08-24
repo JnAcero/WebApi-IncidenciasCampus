@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Dominio.Interfaces;
 using Dominio.Models;
 using Persistencia;
+using Microsoft.EntityFrameworkCore;
 
 namespace Aplicacion.Repositories
 {
@@ -13,5 +14,9 @@ namespace Aplicacion.Repositories
         public TrainerRepository(ApiIncidenciasDbContext context) : base(context)
         {
         }
+         public async Task<Trainer> GetTrainerById(int id)
+         {
+            return await _context.Trainers.FirstOrDefaultAsync(x => x.Id == id);
+         }
     }
 }

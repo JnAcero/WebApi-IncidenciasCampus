@@ -8,6 +8,7 @@ namespace Dominio.Interfaces
 {
     public interface ITrainer:IGenericRepository<Trainer>
     {
+        Task<Trainer> GetTrainerById(int id);
         
     }
 }

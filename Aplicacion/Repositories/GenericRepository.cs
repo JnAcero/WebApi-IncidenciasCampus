@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Dominio.Interfaces;
 using Dominio.Models;
 using Persistencia;
+using Microsoft.EntityFrameworkCore;
 
 namespace Aplicacion.Repositories
 {
@@ -32,9 +33,9 @@ namespace Aplicacion.Repositories
              return _context.Set<T>().Where(expression);
         }
 
-        public virtual Task<IEnumerable<T>> GetAllAsync()
+        public virtual async Task<IEnumerable<T>> GetAllAsync()
         {
-           throw new NotImplementedException();
+           return await _context.Set<T>().ToListAsync();
         }
 
         public virtual Task<(int totalRegistros, IEnumerable<T> registros)> GetAllAsync(int pageIndex, int pageSize, string search)
