@@ -28,9 +28,9 @@ namespace Aplicacion.Repositories
             _context.AddRange(entities);
         }
 
-        public IEnumerable<T> Find(Expression<Func<T, bool>> expression)
+        public async Task<IEnumerable<T>> Find(Expression<Func<T, bool>> expression)
         {
-             return _context.Set<T>().Where(expression);
+             return await _context.Set<T>().Where(expression).ToListAsync();
         }
 
         public virtual async Task<IEnumerable<T>> GetAllAsync()
@@ -38,9 +38,14 @@ namespace Aplicacion.Repositories
            return await _context.Set<T>().ToListAsync();
         }
 
-        public virtual Task<(int totalRegistros, IEnumerable<T> registros)> GetAllAsync(int pageIndex, int pageSize, string search)
+        public virtual async Task<(int totalRegistros, IEnumerable<T> registros)> GetAllAsync(int pageIndex, int pageSize, string search)
         {
-            throw new NotImplementedException();
+           var totalRegistros = await _context.Set<T>().CountAsync();
+           var registros = await _context.Set<T>()
+           .Skip((pageIndex -1)*pageSize)
+           .Take(pageSize)
+           .ToListAsync();
+           return (totalRegistros, registros);
         }
 
         public  virtual Task<T> GetByIdAsync(int id)
@@ -55,7 +60,7 @@ namespace Aplicacion.Repositories
 
         public void RemoveRange(IEnumerable<T> entities)
         {
-            throw new NotImplementedException();
+           _context.RemoveRange(entities);
         }
 
         public void Update(T entity)

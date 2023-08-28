@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace IncidenciasApi.Controllers
 {
     [ApiController]
+    [ApiVersion("1.0")]
+    [ApiVersion("1.1")]
     //[Route("api/controller/IncidenciaHardware")]
     public class IncidenciaHardwareController : BaseApiController
     {

@@ -18,5 +18,30 @@ namespace Aplicacion.Repositories
          {
             return await _context.Trainers.FirstOrDefaultAsync(x => x.Id == id);
          }
+         public  async Task<(int totalRegistros, IEnumerable<Trainer> registros)> GetAllAsyncT(int pageIndex, int pageSize, string Search)
+         {
+            var query = _context.Trainers as IQueryable<Trainer>;
+            if(!string.IsNullOrEmpty(Search))
+            {
+                query = query.Where(t =>t.Nombres.Contains(Search) || t.Apellidos.Contains(Search));
+            }
+            var totalRegistros = await query.CountAsync();
+            var registros = await query
+                                        .Include(r => r.EmailsTrainer)
+                                        .Include(r => r.TelefonosTrainer)
+                                        .Include(r =>r.ContactosTrainers)
+                                        .Skip((pageIndex-1)*pageSize)
+                                        .Take(pageSize)
+                                        .ToListAsync();
+            return (totalRegistros,registros);
+         }
+         public async override Task<IEnumerable<Trainer>> GetAllAsync()
+         {
+            return await _context.Trainers
+            .Include(t =>t.EmailsTrainer)
+            .Include(t =>t.TelefonosTrainer)
+            .Include(t =>t.ContactosTrainers)
+            .ToListAsync();
+         }
     }
 }

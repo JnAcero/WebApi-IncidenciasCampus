@@ -9,6 +9,6 @@ namespace Dominio.Interfaces
     public interface ITrainer:IGenericRepository<Trainer>
     {
         Task<Trainer> GetTrainerById(int id);
-        
+        Task<(int totalRegistros, IEnumerable<Trainer> registros)> GetAllAsyncT(int pageIndex, int pageSize, string Search);  
     }
 }

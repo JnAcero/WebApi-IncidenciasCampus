@@ -21,7 +21,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApiIncidenciasDbContext>(options =>
 {
-    string ? ConnectionString = builder.Configuration.GetConnectionString("ConexMySqlCampus");
+    string ? ConnectionString = builder.Configuration.GetConnectionString("ConexMySqlCasa");
     options.UseMySql(ConnectionString,ServerVersion.AutoDetect(ConnectionString));
 });
 builder.Services.AddAutoMapper(Assembly.GetEntryAssembly());
@@ -36,7 +36,7 @@ if (app.Environment.IsDevelopment())
 app.UseCors("CorsPolicy");
 app.UseHttpsRedirection();
 app.UseIpRateLimiting();
-
+app.UseApiVersioning(); 
 app.UseAuthorization();
 
 app.MapControllers();

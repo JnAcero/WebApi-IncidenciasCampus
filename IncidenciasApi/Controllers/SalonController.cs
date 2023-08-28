@@ -8,6 +8,8 @@ using IncidenciasApi.Helpers;
 namespace IncidenciasApi.Controllers
 {
     [ApiController]
+    [ApiVersion("1.0")]
+    [ApiVersion("1.1")]
     //[Route("api/controller/salones")]
     public class SalonController : BaseApiController
     {

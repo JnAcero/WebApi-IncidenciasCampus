@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace IncidenciasApi.Controllers
 {
+    [ApiVersion("1.0")]
+    [ApiVersion("1.1")]
     public class IncidenciaController : BaseApiController
     {
         public IncidenciaController(IUnitOfWork unitOfWork, IMapper mapper) : base(unitOfWork, mapper)
@@ -45,5 +47,6 @@ namespace IncidenciasApi.Controllers
             await _unitOfWork.Save();
             return Ok(incidencia);
         }
+        
     }
 }

@@ -10,7 +10,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace IncidenciasApi.Controllers
 {
-    [ApiController]
+  
+    [ApiVersion("1.0")]
+    [ApiVersion("1.1")]
     //[Route("api/controller/trainer/telefonos")]
     public class TelefonoTrainerController : BaseApiController
     {

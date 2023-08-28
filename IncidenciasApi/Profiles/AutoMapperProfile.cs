@@ -36,6 +36,7 @@ namespace IncidenciasApi.Perfiles
             .ForMember(x => x.IncidenciasSoftwares,opt =>opt.Ignore())
             .ReverseMap();
             CreateMap<SoftwareEquipoCreationDTO,EquipoSoftware>().ReverseMap();
+           
 
         }
     }

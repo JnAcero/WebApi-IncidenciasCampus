@@ -11,7 +11,9 @@ using IncidenciasApi.Helpers;
 
 namespace IncidenciasApi.Controllers
 {
-    [ApiController]
+
+    [ApiVersion("1.0")]
+    [ApiVersion("1.1")]
     // [Route("api/controller/trainer")]
     public class TrainerController : BaseApiController
     {
@@ -73,7 +75,7 @@ namespace IncidenciasApi.Controllers
         [HttpGet("{id:int}")]
         public async Task<ActionResult<IEnumerable<Trainer>>> GetTrainers(int id)
         {
-            var trainers = _unitOfWork.Trainers.Find(x => x.Id == id);
+            var trainers = await _unitOfWork.Trainers.Find(x => x.Id == id);
             if (trainers is null)
             {
                 return NotFound();
@@ -83,22 +85,32 @@ namespace IncidenciasApi.Controllers
         [HttpGet("{nombre}")]
         public async Task<ActionResult<IEnumerable<Trainer>>> GetTrainersByName(string nombre)
         {
-            var trainers = _unitOfWork.Trainers.Find(x => x.Nombres.Contains(nombre));
+            var trainers = await _unitOfWork.Trainers.Find(x => x.Nombres.Contains(nombre));
             if (trainers is null)
             {
                 return NotFound();
             }
             return Ok(trainers);
         }
+        [MapToApiVersion("1.0")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Trainer>>> GetTrainers()
         {
             var trainers = await _unitOfWork.Trainers.GetAllAsync();
-            if(trainers is null){
+            if (trainers is null)
+            {
                 return NotFound();
             }
             return Ok(trainers);
-           
+
         }
-}
+        [MapToApiVersion("1.1")]
+        [HttpGet("V1.1")]
+        public async Task<ActionResult<Pager<Trainer>>> GetTrainers11([FromQuery] Params trainerParams)
+        {
+            var trainers = await _unitOfWork.Trainers.GetAllAsyncT(trainerParams.PageIndex, trainerParams.PageSize, trainerParams.Search);
+    
+            return new Pager<Trainer>(trainers.registros, trainers.totalRegistros, trainerParams.PageIndex, trainerParams.PageSize, trainerParams.Search);
+        }
+    }
 }
