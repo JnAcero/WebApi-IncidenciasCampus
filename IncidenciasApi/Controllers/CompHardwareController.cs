@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 using AutoMapper;
 using Dominio.Interfaces;
 using Dominio.Models;
@@ -23,6 +20,9 @@ namespace IncidenciasApi.Controllers
         public async Task<ActionResult> PostCompHardaware(CompHardwareCreationDTO[] hardwaresDtos)
         {
             var hardwares = _mapper.Map<ComponenteHardware[]>(hardwaresDtos);
+            foreach(var hardware in hardwares){
+                hardware.FechaMantenimiento = DateTime.Now;
+            }
             _unitOfWork.ComponentesHardware.AddRange(hardwares);
             await _unitOfWork.Save();
             return Ok(hardwares);

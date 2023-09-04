@@ -58,3 +58,18 @@ C:\Users\Juan Acero\Documents\Campus\WebApi-IncidenciasCampus\Persistencia\obj\D
 C:\Users\Juan Acero\Documents\Campus\WebApi-IncidenciasCampus\Persistencia\obj\Debug\net7.0\refint\Persistencia.dll
 C:\Users\Juan Acero\Documents\Campus\WebApi-IncidenciasCampus\Persistencia\obj\Debug\net7.0\Persistencia.pdb
 C:\Users\Juan Acero\Documents\Campus\WebApi-IncidenciasCampus\Persistencia\obj\Debug\net7.0\ref\Persistencia.dll
+C:\Users\APM01-60\Documents\JnAcero\WebApi-IncidenciasCampus\Persistencia\bin\Debug\net7.0\Persistencia.deps.json
+C:\Users\APM01-60\Documents\JnAcero\WebApi-IncidenciasCampus\Persistencia\bin\Debug\net7.0\Persistencia.dll
+C:\Users\APM01-60\Documents\JnAcero\WebApi-IncidenciasCampus\Persistencia\bin\Debug\net7.0\Persistencia.pdb
+C:\Users\APM01-60\Documents\JnAcero\WebApi-IncidenciasCampus\Persistencia\bin\Debug\net7.0\Dominio.dll
+C:\Users\APM01-60\Documents\JnAcero\WebApi-IncidenciasCampus\Persistencia\bin\Debug\net7.0\Dominio.pdb
+C:\Users\APM01-60\Documents\JnAcero\WebApi-IncidenciasCampus\Persistencia\obj\Debug\net7.0\Persistencia.csproj.AssemblyReference.cache
+C:\Users\APM01-60\Documents\JnAcero\WebApi-IncidenciasCampus\Persistencia\obj\Debug\net7.0\Persistencia.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\APM01-60\Documents\JnAcero\WebApi-IncidenciasCampus\Persistencia\obj\Debug\net7.0\Persistencia.AssemblyInfoInputs.cache
+C:\Users\APM01-60\Documents\JnAcero\WebApi-IncidenciasCampus\Persistencia\obj\Debug\net7.0\Persistencia.AssemblyInfo.cs
+C:\Users\APM01-60\Documents\JnAcero\WebApi-IncidenciasCampus\Persistencia\obj\Debug\net7.0\Persistencia.csproj.CoreCompileInputs.cache
+C:\Users\APM01-60\Documents\JnAcero\WebApi-IncidenciasCampus\Persistencia\obj\Debug\net7.0\Persistencia.csproj.CopyComplete
+C:\Users\APM01-60\Documents\JnAcero\WebApi-IncidenciasCampus\Persistencia\obj\Debug\net7.0\Persistencia.dll
+C:\Users\APM01-60\Documents\JnAcero\WebApi-IncidenciasCampus\Persistencia\obj\Debug\net7.0\refint\Persistencia.dll
+C:\Users\APM01-60\Documents\JnAcero\WebApi-IncidenciasCampus\Persistencia\obj\Debug\net7.0\Persistencia.pdb
+C:\Users\APM01-60\Documents\JnAcero\WebApi-IncidenciasCampus\Persistencia\obj\Debug\net7.0\ref\Persistencia.dll

@@ -17,6 +17,7 @@ namespace Dominio.Models
         public int CiudadId { get; set; } 
         [ForeignKey("CiudadId")]
         public Ciudad Ciudad { get; set; }=null!;
+        public Usuario ? Usuario { get; set; } 
         public ICollection<EmailTrainer> EmailsTrainer { get; set; } = new List<EmailTrainer>();
         public ICollection<TelefonoTrainer> TelefonosTrainer { get; set; } = new List<TelefonoTrainer>();
         public ICollection<Incidencia> Incidencias { get; set; } = new List<Incidencia>();

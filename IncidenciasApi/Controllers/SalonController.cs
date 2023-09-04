@@ -34,5 +34,10 @@ namespace IncidenciasApi.Controllers
                 return StatusCode(500,response);
             }
         }
+       /*  [HttpGet]
+        public async Task<ActionResult> GetSalones()
+        {
+            var salones = await _unitOfWork.Salones.GetAllAsync();
+        } */
     }
 }
