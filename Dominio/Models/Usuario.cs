@@ -15,7 +15,7 @@ namespace Dominio.Models
         public int TrainerId { get; set; }
         [ForeignKey("TrainerId")]
         public Trainer Trainer { get; set; } = null!;
-         public ICollection<UsuarioRol> UsuariosRoles { get; set; } = new List<UsuarioRol>();
+         public List<UsuarioRol> UsuariosRoles { get; set; } = new List<UsuarioRol>();
         
     }
 }

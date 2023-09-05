@@ -3,7 +3,10 @@ using System.Text;
 using Aplicacion.UnitOfWork;
 using AspNetCoreRateLimit;
 using Dominio.Interfaces;
+using Dominio.Models;
+using IncidenciasApi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.IdentityModel.Tokens;
@@ -23,6 +26,8 @@ namespace IncidenciasApi.Extensions
         public static void AddAplicationServices(this IServiceCollection services)
         {
             services.AddScoped<IUnitOfWork,UnitOfWork>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IPasswordHasher<Usuario>, PasswordHasher<Usuario>>();
         }
         public static void ConfigureRateLimiting(this IServiceCollection services)
         {

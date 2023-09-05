@@ -1,6 +1,7 @@
 
 using Aplicacion.Repositories;
 using Dominio.Interfaces;
+using Dominio.Models;
 using Persistencia;
 
 namespace Aplicacion.UnitOfWork
@@ -19,6 +20,9 @@ namespace Aplicacion.UnitOfWork
         private SalonRepository _salones;
         private EquipoRepository _equipos;
         private EquipoSoftwareRepository _equiposSoftwares;
+        private UsuarioRepository _usuarios;
+        private RolRepository _roles;
+        private UsuarioRolRepository _usuariosRoles;
 
 
         public UnitOfWork(ApiIncidenciasDbContext context)
@@ -95,6 +99,28 @@ namespace Aplicacion.UnitOfWork
             get{
                 _equiposSoftwares ??= new EquipoSoftwareRepository(_context);
                 return _equiposSoftwares;
+            }
+        }
+
+        public IUsuario Usuarios{
+            get{
+                _usuarios ??= new UsuarioRepository(_context);
+                return _usuarios;
+            }
+
+        }
+
+        public IRol Roles{
+            get{
+                _roles ??= new RolRepository(_context);
+                return _roles;
+            }
+        }
+
+        public IUsuarioRol UsuariosRoles{
+            get{
+                _usuariosRoles ??= new UsuarioRolRepository(_context);
+                return _usuariosRoles;
             }
         }
 

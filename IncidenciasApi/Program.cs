@@ -13,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.ConfigCores();
 builder.Services.AddControllers();
 builder.Services.AddAplicationServices();
+builder.Services.AddJwt(builder.Configuration);
 builder.Services.ConfigureRateLimiting();
 builder.Services.ConfigureApiVersioning();
 builder.Services.AddControllers()
@@ -21,7 +22,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApiIncidenciasDbContext>(options =>
 {
-    string ? ConnectionString = builder.Configuration.GetConnectionString("ConexMySqlLocalCampus");
+    string ? ConnectionString = builder.Configuration.GetConnectionString("ConexMySqlCasa2");
     options.UseMySql(ConnectionString,ServerVersion.AutoDetect(ConnectionString));
 });
 builder.Services.AddAutoMapper(Assembly.GetEntryAssembly());
@@ -37,6 +38,8 @@ app.UseCors("CorsPolicy");
 app.UseHttpsRedirection();
 app.UseIpRateLimiting();
 app.UseApiVersioning(); 
+
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

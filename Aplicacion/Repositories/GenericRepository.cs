@@ -48,9 +48,9 @@ namespace Aplicacion.Repositories
            return (totalRegistros, registros);
         }
 
-        public  virtual Task<T> GetByIdAsync(int id)
+        public async virtual Task<T> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Set<T>().FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public void Remove(T entity)

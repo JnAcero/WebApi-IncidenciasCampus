@@ -4,10 +4,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace Persistencia.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -93,6 +95,21 @@ namespace Persistencia.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Paises", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Roles",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Nombre = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Roles", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -346,7 +363,9 @@ namespace Persistencia.Data.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     NumDocumento = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Nombre = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
+                    Nombres = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Apellidos = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Genero = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -493,6 +512,39 @@ namespace Persistencia.Data.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "Usuarios",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    NombreUsuario = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Email = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Password = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    FechaCreacion = table.Column<DateTime>(type: "date", nullable: false),
+                    TrainerId = table.Column<int>(type: "int", nullable: false),
+                    RolId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Usuarios", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Usuarios_Roles_RolId",
+                        column: x => x.RolId,
+                        principalTable: "Roles",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Usuarios_Trainers_TrainerId",
+                        column: x => x.TrainerId,
+                        principalTable: "Trainers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "IncidenciasComponentesH",
                 columns: table => new
                 {
@@ -545,6 +597,142 @@ namespace Persistencia.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "UsuariosRoles",
+                columns: table => new
+                {
+                    UsuarioId = table.Column<int>(type: "int", nullable: false),
+                    RolId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UsuariosRoles", x => new { x.UsuarioId, x.RolId });
+                    table.ForeignKey(
+                        name: "FK_UsuariosRoles_Roles_RolId",
+                        column: x => x.RolId,
+                        principalTable: "Roles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_UsuariosRoles_Usuarios_UsuarioId",
+                        column: x => x.UsuarioId,
+                        principalTable: "Usuarios",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.InsertData(
+                table: "Areas",
+                columns: new[] { "Id", "Descripcion", "NombreArea" },
+                values: new object[,]
+                {
+                    { 1, "Zona de estudio personal al lado de hunters", "Review 1" },
+                    { 2, "Zona de estudio personal al lado de training", "Review 2" },
+                    { 3, "Area donde se dan las clases de progrmacion", "Area de Training" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "CategoriasIncidencias",
+                columns: new[] { "Id", "Categoria" },
+                values: new object[,]
+                {
+                    { 1, "Software" },
+                    { 2, "Hardware" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "GravedadesIncidencias",
+                columns: new[] { "Id", "Gravedad" },
+                values: new object[,]
+                {
+                    { 1, "Leve" },
+                    { 2, "Moderada" },
+                    { 3, "Grave" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Paises",
+                columns: new[] { "Id", "Nombre" },
+                values: new object[] { 1, "Colombia" });
+
+            migrationBuilder.InsertData(
+                table: "TipoSoftware",
+                columns: new[] { "Id", "Tipo" },
+                values: new object[,]
+                {
+                    { 1, "Sistema" },
+                    { 2, "Aplicacion" },
+                    { 3, "Gestion" },
+                    { 4, "Programacion" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "TiposEmail",
+                columns: new[] { "Id", "Tipo" },
+                values: new object[,]
+                {
+                    { 1, "Email Personal" },
+                    { 2, "Email Empresarial" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "TiposHardware",
+                columns: new[] { "Id", "NombreHardware" },
+                values: new object[,]
+                {
+                    { 1, "Teclado" },
+                    { 2, "Mouse" },
+                    { 3, "Diadema" },
+                    { 4, "Pantalla" },
+                    { 5, "CPU" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "TiposTelefono",
+                columns: new[] { "Id", "Tipo" },
+                values: new object[,]
+                {
+                    { 1, "Telefono personal" },
+                    { 2, "Telefono empresarial" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Dptos",
+                columns: new[] { "Id", "Nombre", "PaisId" },
+                values: new object[] { 1, "Santander", 1 });
+
+            migrationBuilder.InsertData(
+                table: "Salones",
+                columns: new[] { "Id", "AreaId", "CantidadEquipos", "NombreSalon" },
+                values: new object[,]
+                {
+                    { 1, 3, 25, "Apolo" },
+                    { 2, 3, 25, "Sputnik" },
+                    { 3, 3, 25, "Artemis" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Softwares",
+                columns: new[] { "Id", "Descripcion", "Nombre", "TipoSofwareId" },
+                values: new object[,]
+                {
+                    { 1, "Framework de Microsoft para desarrollo de microservicios, desarrollo web, entre otros", ".NET Framework", 4 },
+                    { 2, "Discord es un servicio de mensajería instantánea y chat de voz VolP. En esta plataforma, los usuarios tienen la capacidad de comunicarse por llamadas de voz, videollamadas, mensajes de texto etc", "Discord", 2 },
+                    { 3, "Navegador web", "Chrome", 4 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Ciudades",
+                columns: new[] { "Id", "DptoId", "Nombre" },
+                values: new object[,]
+                {
+                    { 1, 1, "Bucaramanga" },
+                    { 2, 1, "Floridablanca" },
+                    { 3, 1, "Giron" },
+                    { 4, 1, "Piedecuesta" }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Ciudades_DptoId",
@@ -635,6 +823,22 @@ namespace Persistencia.Data.Migrations
                 name: "IX_TrainersContactos_ContactoId",
                 table: "TrainersContactos",
                 column: "ContactoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Usuarios_RolId",
+                table: "Usuarios",
+                column: "RolId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Usuarios_TrainerId",
+                table: "Usuarios",
+                column: "TrainerId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UsuariosRoles_RolId",
+                table: "UsuariosRoles",
+                column: "RolId");
         }
 
         /// <inheritdoc />
@@ -659,6 +863,9 @@ namespace Persistencia.Data.Migrations
                 name: "TrainersContactos");
 
             migrationBuilder.DropTable(
+                name: "UsuariosRoles");
+
+            migrationBuilder.DropTable(
                 name: "TiposEmail");
 
             migrationBuilder.DropTable(
@@ -677,6 +884,9 @@ namespace Persistencia.Data.Migrations
                 name: "Contactos");
 
             migrationBuilder.DropTable(
+                name: "Usuarios");
+
+            migrationBuilder.DropTable(
                 name: "TiposHardware");
 
             migrationBuilder.DropTable(
@@ -689,10 +899,13 @@ namespace Persistencia.Data.Migrations
                 name: "GravedadesIncidencias");
 
             migrationBuilder.DropTable(
-                name: "Trainers");
+                name: "TipoSoftware");
 
             migrationBuilder.DropTable(
-                name: "TipoSoftware");
+                name: "Roles");
+
+            migrationBuilder.DropTable(
+                name: "Trainers");
 
             migrationBuilder.DropTable(
                 name: "Salones");

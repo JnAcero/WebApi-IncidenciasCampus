@@ -455,7 +455,7 @@ namespace Persistencia.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Rol");
+                    b.ToTable("Roles");
                 });
 
             modelBuilder.Entity("Dominio.Models.Salon", b =>
@@ -775,6 +775,10 @@ namespace Persistencia.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<DateTime>("FechaCreacion")
                         .HasColumnType("date");
 
@@ -787,15 +791,20 @@ namespace Persistencia.Data.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int?>("RolId")
+                        .HasColumnType("int");
+
                     b.Property<int>("TrainerId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("RolId");
+
                     b.HasIndex("TrainerId")
                         .IsUnique();
 
-                    b.ToTable("Usuario");
+                    b.ToTable("Usuarios");
                 });
 
             modelBuilder.Entity("Dominio.Models.UsuarioRol", b =>
@@ -810,7 +819,7 @@ namespace Persistencia.Data.Migrations
 
                     b.HasIndex("RolId");
 
-                    b.ToTable("UsuarioRol");
+                    b.ToTable("UsuariosRoles");
                 });
 
             modelBuilder.Entity("Dominio.Models.Ciudad", b =>
@@ -1049,6 +1058,10 @@ namespace Persistencia.Data.Migrations
 
             modelBuilder.Entity("Dominio.Models.Usuario", b =>
                 {
+                    b.HasOne("Dominio.Models.Rol", null)
+                        .WithMany("Usuarios")
+                        .HasForeignKey("RolId");
+
                     b.HasOne("Dominio.Models.Trainer", "Trainer")
                         .WithOne("Usuario")
                         .HasForeignKey("Dominio.Models.Usuario", "TrainerId")
@@ -1135,6 +1148,8 @@ namespace Persistencia.Data.Migrations
 
             modelBuilder.Entity("Dominio.Models.Rol", b =>
                 {
+                    b.Navigation("Usuarios");
+
                     b.Navigation("UsuariosRoles");
                 });
 

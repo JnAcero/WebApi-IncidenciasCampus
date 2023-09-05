@@ -44,5 +44,8 @@ namespace Persistencia
         public DbSet<Contacto> Contactos => Set<Contacto>();
         public DbSet<Trainer> Trainers => Set<Trainer>();
         public DbSet<TrainerContacto> TrainersContactos => Set<TrainerContacto>();
+        public DbSet<Usuario> Usuarios => Set<Usuario>();
+        public DbSet<UsuarioRol> UsuariosRoles => Set<UsuarioRol>();
+        public DbSet<Rol> Roles => Set<Rol>();
     }
 }

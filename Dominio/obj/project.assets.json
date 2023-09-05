@@ -4759,19 +4759,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\APM01-60\\.nuget\\packages\\": {}
+    "C:\\Users\\Juan Acero\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\APM01-60\\Documents\\JnAcero\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj",
+      "projectUniqueName": "c:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj",
       "projectName": "Dominio",
-      "projectPath": "c:\\Users\\APM01-60\\Documents\\JnAcero\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj",
-      "packagesPath": "C:\\Users\\APM01-60\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\APM01-60\\Documents\\JnAcero\\WebApi-IncidenciasCampus\\Dominio\\obj\\",
+      "projectPath": "c:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj",
+      "packagesPath": "C:\\Users\\Juan Acero\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Dominio\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\APM01-60\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Juan Acero\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -4820,7 +4820,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
       }
     }
   }

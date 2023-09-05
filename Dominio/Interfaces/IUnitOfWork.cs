@@ -15,6 +15,9 @@ namespace Dominio.Interfaces
         ISalon Salones { get; }
         IEquipo Equipos { get; }
         IEquipoSoftware EquiposSoftwares { get; }
+        IUsuario Usuarios { get; }
+        IRol Roles { get; }
+        IUsuarioRol UsuariosRoles { get; }
         Task<int> Save ();
     }
 

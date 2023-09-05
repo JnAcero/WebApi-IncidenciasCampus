@@ -5215,19 +5215,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\APM01-60\\.nuget\\packages\\": {}
+    "C:\\Users\\Juan Acero\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\APM01-60\\Documents\\JnAcero\\WebApi-IncidenciasCampus\\Persistencia\\Persistencia.csproj",
+      "projectUniqueName": "c:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Persistencia\\Persistencia.csproj",
       "projectName": "Persistencia",
-      "projectPath": "c:\\Users\\APM01-60\\Documents\\JnAcero\\WebApi-IncidenciasCampus\\Persistencia\\Persistencia.csproj",
-      "packagesPath": "C:\\Users\\APM01-60\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\APM01-60\\Documents\\JnAcero\\WebApi-IncidenciasCampus\\Persistencia\\obj\\",
+      "projectPath": "c:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Persistencia\\Persistencia.csproj",
+      "packagesPath": "C:\\Users\\Juan Acero\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Persistencia\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\APM01-60\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Juan Acero\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -5239,8 +5239,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "c:\\Users\\APM01-60\\Documents\\JnAcero\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj": {
-              "projectPath": "c:\\Users\\APM01-60\\Documents\\JnAcero\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj"
+            "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj": {
+              "projectPath": "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj"
             }
           }
         }
@@ -5280,7 +5280,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
       }
     }
   }

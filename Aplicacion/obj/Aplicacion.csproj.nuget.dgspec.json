@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\APM01-60\\Documents\\JnAcero\\WebApi-IncidenciasCampus\\Aplicacion\\Aplicacion.csproj": {}
+    "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Aplicacion\\Aplicacion.csproj": {}
   },
   "projects": {
-    "c:\\Users\\APM01-60\\Documents\\JnAcero\\WebApi-IncidenciasCampus\\Aplicacion\\Aplicacion.csproj": {
+    "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Aplicacion\\Aplicacion.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\APM01-60\\Documents\\JnAcero\\WebApi-IncidenciasCampus\\Aplicacion\\Aplicacion.csproj",
+        "projectUniqueName": "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Aplicacion\\Aplicacion.csproj",
         "projectName": "Aplicacion",
-        "projectPath": "c:\\Users\\APM01-60\\Documents\\JnAcero\\WebApi-IncidenciasCampus\\Aplicacion\\Aplicacion.csproj",
-        "packagesPath": "C:\\Users\\APM01-60\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\APM01-60\\Documents\\JnAcero\\WebApi-IncidenciasCampus\\Aplicacion\\obj\\",
+        "projectPath": "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Aplicacion\\Aplicacion.csproj",
+        "packagesPath": "C:\\Users\\Juan Acero\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Aplicacion\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\APM01-60\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Juan Acero\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -26,11 +26,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "c:\\Users\\APM01-60\\Documents\\JnAcero\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj": {
-                "projectPath": "c:\\Users\\APM01-60\\Documents\\JnAcero\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj"
+              "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj": {
+                "projectPath": "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj"
               },
-              "c:\\Users\\APM01-60\\Documents\\JnAcero\\WebApi-IncidenciasCampus\\Persistencia\\Persistencia.csproj": {
-                "projectPath": "c:\\Users\\APM01-60\\Documents\\JnAcero\\WebApi-IncidenciasCampus\\Persistencia\\Persistencia.csproj"
+              "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Persistencia\\Persistencia.csproj": {
+                "projectPath": "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Persistencia\\Persistencia.csproj"
               }
             }
           }
@@ -60,21 +60,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "c:\\Users\\APM01-60\\Documents\\JnAcero\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj": {
+    "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\APM01-60\\Documents\\JnAcero\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj",
+        "projectUniqueName": "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj",
         "projectName": "Dominio",
-        "projectPath": "c:\\Users\\APM01-60\\Documents\\JnAcero\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj",
-        "packagesPath": "C:\\Users\\APM01-60\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\APM01-60\\Documents\\JnAcero\\WebApi-IncidenciasCampus\\Dominio\\obj\\",
+        "projectPath": "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj",
+        "packagesPath": "C:\\Users\\Juan Acero\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Dominio\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\APM01-60\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Juan Acero\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -123,21 +123,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "c:\\Users\\APM01-60\\Documents\\JnAcero\\WebApi-IncidenciasCampus\\Persistencia\\Persistencia.csproj": {
+    "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Persistencia\\Persistencia.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\APM01-60\\Documents\\JnAcero\\WebApi-IncidenciasCampus\\Persistencia\\Persistencia.csproj",
+        "projectUniqueName": "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Persistencia\\Persistencia.csproj",
         "projectName": "Persistencia",
-        "projectPath": "c:\\Users\\APM01-60\\Documents\\JnAcero\\WebApi-IncidenciasCampus\\Persistencia\\Persistencia.csproj",
-        "packagesPath": "C:\\Users\\APM01-60\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\APM01-60\\Documents\\JnAcero\\WebApi-IncidenciasCampus\\Persistencia\\obj\\",
+        "projectPath": "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Persistencia\\Persistencia.csproj",
+        "packagesPath": "C:\\Users\\Juan Acero\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Persistencia\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\APM01-60\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Juan Acero\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -149,8 +149,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "c:\\Users\\APM01-60\\Documents\\JnAcero\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj": {
-                "projectPath": "c:\\Users\\APM01-60\\Documents\\JnAcero\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj"
+              "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj": {
+                "projectPath": "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj"
               }
             }
           }
@@ -190,7 +190,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     }

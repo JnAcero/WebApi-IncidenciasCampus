@@ -11,8 +11,8 @@ using Persistencia;
 namespace Persistencia.Data.Migrations
 {
     [DbContext(typeof(ApiIncidenciasDbContext))]
-    [Migration("20230820060241_DataArea")]
-    partial class DataArea
+    [Migration("20230905044544_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -76,6 +76,18 @@ namespace Persistencia.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("CategoriasIncidencias");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Categoria = "Software"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Categoria = "Hardware"
+                        });
                 });
 
             modelBuilder.Entity("Dominio.Models.Ciudad", b =>
@@ -310,6 +322,23 @@ namespace Persistencia.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("GravedadesIncidencias");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Gravedad = "Leve"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Gravedad = "Moderada"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Gravedad = "Grave"
+                        });
                 });
 
             modelBuilder.Entity("Dominio.Models.Incidencia", b =>
@@ -416,6 +445,22 @@ namespace Persistencia.Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Dominio.Models.Rol", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Roles");
+                });
+
             modelBuilder.Entity("Dominio.Models.Salon", b =>
                 {
                     b.Property<int>("Id")
@@ -438,6 +483,29 @@ namespace Persistencia.Data.Migrations
                     b.HasIndex("AreaId");
 
                     b.ToTable("Salones");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AreaId = 3,
+                            CantidadEquipos = 25,
+                            NombreSalon = "Apolo"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AreaId = 3,
+                            CantidadEquipos = 25,
+                            NombreSalon = "Sputnik"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AreaId = 3,
+                            CantidadEquipos = 25,
+                            NombreSalon = "Artemis"
+                        });
                 });
 
             modelBuilder.Entity("Dominio.Models.Software", b =>
@@ -463,6 +531,29 @@ namespace Persistencia.Data.Migrations
                     b.HasIndex("TipoSofwareId");
 
                     b.ToTable("Softwares");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Descripcion = "Framework de Microsoft para desarrollo de microservicios, desarrollo web, entre otros",
+                            Nombre = ".NET Framework",
+                            TipoSofwareId = 4
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Descripcion = "Navegador web",
+                            Nombre = "Chrome",
+                            TipoSofwareId = 4
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Descripcion = "Discord es un servicio de mensajería instantánea y chat de voz VolP. En esta plataforma, los usuarios tienen la capacidad de comunicarse por llamadas de voz, videollamadas, mensajes de texto etc",
+                            Nombre = "Discord",
+                            TipoSofwareId = 2
+                        });
                 });
 
             modelBuilder.Entity("Dominio.Models.TelefonoTrainer", b =>
@@ -527,6 +618,33 @@ namespace Persistencia.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TiposHardware");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            NombreHardware = "Teclado"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            NombreHardware = "Mouse"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            NombreHardware = "Pantalla"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            NombreHardware = "Diadema"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            NombreHardware = "CPU"
+                        });
                 });
 
             modelBuilder.Entity("Dominio.Models.TipoSoftware", b =>
@@ -543,6 +661,28 @@ namespace Persistencia.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TipoSoftware");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 2,
+                            Tipo = "Aplicacion"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Tipo = "Gestion"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Tipo = "Programacion"
+                        },
+                        new
+                        {
+                            Id = 1,
+                            Tipo = "Sistema"
+                        });
                 });
 
             modelBuilder.Entity("Dominio.Models.TipoTelefono", b =>
@@ -630,6 +770,59 @@ namespace Persistencia.Data.Migrations
                     b.HasIndex("ContactoId");
 
                     b.ToTable("TrainersContactos");
+                });
+
+            modelBuilder.Entity("Dominio.Models.Usuario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("FechaCreacion")
+                        .HasColumnType("date");
+
+                    b.Property<string>("NombreUsuario")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int?>("RolId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TrainerId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RolId");
+
+                    b.HasIndex("TrainerId")
+                        .IsUnique();
+
+                    b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("Dominio.Models.UsuarioRol", b =>
+                {
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RolId")
+                        .HasColumnType("int");
+
+                    b.HasKey("UsuarioId", "RolId");
+
+                    b.HasIndex("RolId");
+
+                    b.ToTable("UsuariosRoles");
                 });
 
             modelBuilder.Entity("Dominio.Models.Ciudad", b =>
@@ -866,6 +1059,40 @@ namespace Persistencia.Data.Migrations
                     b.Navigation("Trainer");
                 });
 
+            modelBuilder.Entity("Dominio.Models.Usuario", b =>
+                {
+                    b.HasOne("Dominio.Models.Rol", null)
+                        .WithMany("Usuarios")
+                        .HasForeignKey("RolId");
+
+                    b.HasOne("Dominio.Models.Trainer", "Trainer")
+                        .WithOne("Usuario")
+                        .HasForeignKey("Dominio.Models.Usuario", "TrainerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Trainer");
+                });
+
+            modelBuilder.Entity("Dominio.Models.UsuarioRol", b =>
+                {
+                    b.HasOne("Dominio.Models.Rol", "Rol")
+                        .WithMany("UsuariosRoles")
+                        .HasForeignKey("RolId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Dominio.Models.Usuario", "Usuario")
+                        .WithMany("UsuariosRoles")
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Rol");
+
+                    b.Navigation("Usuario");
+                });
+
             modelBuilder.Entity("Dominio.Models.Area", b =>
                 {
                     b.Navigation("Salones");
@@ -922,6 +1149,13 @@ namespace Persistencia.Data.Migrations
                     b.Navigation("Dptos");
                 });
 
+            modelBuilder.Entity("Dominio.Models.Rol", b =>
+                {
+                    b.Navigation("Usuarios");
+
+                    b.Navigation("UsuariosRoles");
+                });
+
             modelBuilder.Entity("Dominio.Models.Salon", b =>
                 {
                     b.Navigation("Equipos");
@@ -963,6 +1197,13 @@ namespace Persistencia.Data.Migrations
                     b.Navigation("Incidencias");
 
                     b.Navigation("TelefonosTrainer");
+
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("Dominio.Models.Usuario", b =>
+                {
+                    b.Navigation("UsuariosRoles");
                 });
 #pragma warning restore 612, 618
         }
