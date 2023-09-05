@@ -16,10 +16,24 @@ namespace Aplicacion.Repositories
         public UsuarioRepository(ApiIncidenciasDbContext context) : base(context)
         {
         }
+
+        public async  Task<Usuario> FindByUserNameAndPassword(string username, string password)
+        {
+            var user = await _context.Usuarios.Where(u =>u.NombreUsuario.ToLower() == username.ToLower() && u.Password == password).FirstOrDefaultAsync();
+            return user;
+        }
+
         public async Task<Usuario> FindUserByUserName(string userName)
         {
            var user = await _context.Usuarios.Where( u => u.NombreUsuario.ToLower() == userName.ToLower() ).FirstOrDefaultAsync();
            return user;
+        }
+        public override async Task<IEnumerable<Usuario>> GetAllAsync()
+        {
+            var users = await _context.Usuarios
+            .Include(u =>u.UsuariosRoles)
+            .ThenInclude(ur => ur.Rol).ToListAsync();
+            return users;
         }
 
        

@@ -36,6 +36,16 @@ namespace IncidenciasApi.Perfiles
             .ForMember(x => x.IncidenciasSoftwares,opt =>opt.Ignore())
             .ReverseMap();
             CreateMap<SoftwareEquipoCreationDTO,EquipoSoftware>().ReverseMap();
+
+            CreateMap<GetUsuarioDto,Usuario>().ReverseMap();
+            CreateMap<UsuarioRolDTO,UsuarioRol>().ReverseMap();
+            CreateMap<RolDto,Rol>()
+            .ForMember(r =>r.Nombre ,opc => opc.MapFrom(src =>src.NombreRol))
+            .ReverseMap();
+            
+
+            CreateMap<RolDto,Rol>()
+            .ForMember(x => x.Nombre, opt =>opt.MapFrom(src =>src.NombreRol)).ReverseMap();
            
 
         }

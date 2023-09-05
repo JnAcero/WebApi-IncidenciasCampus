@@ -4,6 +4,7 @@ using Aplicacion.UnitOfWork;
 using AspNetCoreRateLimit;
 using Dominio.Interfaces;
 using Dominio.Models;
+using IncidenciasApi.Helpers;
 using IncidenciasApi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -68,6 +69,7 @@ namespace IncidenciasApi.Extensions
 
         public static void AddJwt(this IServiceCollection services , IConfiguration configuration)
         {
+            services.Configure<JWT>(configuration.GetSection("JWT"));
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
