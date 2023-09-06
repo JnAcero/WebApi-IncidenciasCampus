@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Dominio.Interfaces;
+using Dominio.Models;
 using IncidenciasApi.DTOS;
 using IncidenciasApi.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -32,14 +33,39 @@ namespace IncidenciasApi.Controllers
             var respuesta = await _userService.LoginAsync(loginDto);
             return respuesta;
         }
-        [HttpGet]
-        [Authorize(Roles ="Admin")]
+        [HttpGet]  
+        [Authorize(Roles="Admin")]
         public async Task<ActionResult> GetAllUsers()
         {
             var users= await _unitOfWork.Usuarios.GetAllAsync();
-            return Ok(users);
+            return Ok(_mapper.Map<GetUsuarioDto[]>(users));
         }
-       /*  [HttpPut]
-        public async Task<ActionResult> */
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult> PutUser(int id, EditUsuarioDTO editUsuarioDto)
+        {
+            Usuario existingUser = await _unitOfWork.Usuarios.GetByIdAsync(id);
+            if(existingUser == null)
+            {
+                return NotFound();
+            }
+            var usuario = _mapper.Map<Usuario>(editUsuarioDto);
+            usuario.Id =id;
+            usuario.Password = _userService.HashPaswordOfUser(usuario);
+            _userService.UpdateAndSaveUserAsync(usuario);
+            return Ok(usuario);
+        }
+
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult> DeleteSalon(int id)
+        {
+            var filasAlteradas = await _unitOfWork.Usuarios.ExecuteDeleteAsync(x => x.Id == id);
+            if(filasAlteradas ==  0)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
+        }
+
     }
 }

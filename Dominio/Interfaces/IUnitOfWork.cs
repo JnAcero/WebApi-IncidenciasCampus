@@ -18,6 +18,7 @@ namespace Dominio.Interfaces
         IUsuario Usuarios { get; }
         IRol Roles { get; }
         IUsuarioRol UsuariosRoles { get; }
+        IArea Areas { get; }
         Task<int> Save ();
     }
 

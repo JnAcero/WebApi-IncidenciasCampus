@@ -48,5 +48,16 @@ namespace IncidenciasApi.Controllers
             return Ok(incidencia);
         }
         
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult> DeleteSalon(int id)
+        {
+            var filasAlteradas = await _unitOfWork.Incidencias.ExecuteDeleteAsync(x => x.Id == id);
+            if(filasAlteradas ==  0)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
+        }
     }
 }

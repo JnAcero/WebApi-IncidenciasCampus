@@ -42,11 +42,16 @@ namespace IncidenciasApi.Perfiles
             CreateMap<RolDto,Rol>()
             .ForMember(r =>r.Nombre ,opc => opc.MapFrom(src =>src.NombreRol))
             .ReverseMap();
-            
 
-            CreateMap<RolDto,Rol>()
-            .ForMember(x => x.Nombre, opt =>opt.MapFrom(src =>src.NombreRol)).ReverseMap();
-           
+            CreateMap<EditUsuarioDTO, Usuario>().ReverseMap();
+
+            CreateMap<SalonDTO,Salon>()
+                .ForMember(s =>s.AreaId,opc =>opc.Ignore())
+                .ReverseMap();  
+            CreateMap<AreaDTO,Area>()
+                .ForMember(a =>a.Id, opc =>opc.MapFrom(src =>src.AreaId))
+                .ReverseMap();
+
 
         }
     }

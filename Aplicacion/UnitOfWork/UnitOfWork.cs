@@ -23,6 +23,7 @@ namespace Aplicacion.UnitOfWork
         private UsuarioRepository _usuarios;
         private RolRepository _roles;
         private UsuarioRolRepository _usuariosRoles;
+        private AreaRepository _areas;
 
 
         public UnitOfWork(ApiIncidenciasDbContext context)
@@ -124,6 +125,12 @@ namespace Aplicacion.UnitOfWork
             }
         }
 
+        public IArea Areas{
+            get{
+                _areas ??= new AreaRepository(_context);
+                return _areas;
+            }
+        }
         public void Dispose()
         {
             _context.Dispose();

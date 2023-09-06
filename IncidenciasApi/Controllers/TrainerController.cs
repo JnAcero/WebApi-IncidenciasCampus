@@ -50,7 +50,7 @@ namespace IncidenciasApi.Controllers
                 return StatusCode(500, response);
             }
         }
-        [HttpPut]
+        [HttpPut("{id:int}")]
         public async Task<ActionResult<Trainer>> PutTrainer(int id, TrainerCreationDTO trainerDto)
         {
             var trainer = _mapper.Map<Trainer>(trainerDto);
@@ -105,7 +105,7 @@ namespace IncidenciasApi.Controllers
 
         }
         [MapToApiVersion("1.1")]
-        [HttpGet("V1.1")]
+        [HttpGet("paginacion/V1.1")]
         public async Task<ActionResult<Pager<Trainer>>> GetTrainers11([FromQuery] Params trainerParams)
         {
             var trainers = await _unitOfWork.Trainers.GetAllAsyncT(trainerParams.PageIndex, trainerParams.PageSize, trainerParams.Search);

@@ -34,10 +34,48 @@ namespace IncidenciasApi.Controllers
                 return StatusCode(500,response);
             }
         }
-       /*  [HttpGet]
+        [HttpGet]
         public async Task<ActionResult> GetSalones()
         {
             var salones = await _unitOfWork.Salones.GetAllAsync();
-        } */
+            var salonesDTO = _mapper.Map<SalonDTO[]>(salones);
+            return Ok(salonesDTO);
+        } 
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult> EditSalon(int id, SalonCreationDTO salonDto)
+        {
+            var salon = await _unitOfWork.Salones.GetByIdAsync(id);
+            if(salon is null)
+            {
+                return NotFound();
+            }
+            salon.Id =id;
+            salon.NombreSalon = salonDto.NombreSalon;
+            salon.CantidadEquipos = salonDto.CantidadEquipos;
+            var area = await _unitOfWork.Areas.GetByIdAsync(salonDto.AreaId);
+            if(area is null)
+            {
+                return NotFound("el id del area que ingreso no existe");
+            }
+            salon.Area = area;
+            salon.AreaId = salonDto.AreaId;
+            await _unitOfWork.Save();
+            return Ok(salon); 
+        }
+        
+        //Version moderna para eliminar de la base de datos, ejecuta una sola query
+        [MapToApiVersion("1.1")]
+        [HttpDelete("V1.1/{id:int}")]
+        public async Task<ActionResult> DeleteSalon(int id)
+        {
+            var filasAlteradas = await _unitOfWork.Salones.ExecuteDeleteAsync(x => x.Id == id);
+            if(filasAlteradas ==  0)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
+        }
+         
     }
 }

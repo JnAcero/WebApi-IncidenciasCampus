@@ -17,15 +17,23 @@ namespace Aplicacion.Repositories
         {
         }
 
-        public async  Task<Usuario> FindByUserNameAndPassword(string username, string password)
+        public async Task<Usuario> FindByUserNameAndPassword(string username, string password)
         {
-            var user = await _context.Usuarios.Where(u =>u.NombreUsuario.ToLower() == username.ToLower() && u.Password == password).FirstOrDefaultAsync();
+            var user = await _context.Usuarios
+            .Where(u =>u.NombreUsuario.ToLower() == username.ToLower() && u.Password == password)
+            .Include(u =>u.UsuariosRoles)
+            .FirstOrDefaultAsync();
             return user;
         }
 
         public async Task<Usuario> FindUserByUserName(string userName)
         {
-           var user = await _context.Usuarios.Where( u => u.NombreUsuario.ToLower() == userName.ToLower() ).FirstOrDefaultAsync();
+           var user = await _context.Usuarios
+           .Where( u => u.NombreUsuario.ToLower() == userName.ToLower() )
+           .Include(u =>u.UsuariosRoles)
+                .ThenInclude(ur =>ur.Rol)
+           .FirstOrDefaultAsync()
+           ;
            return user;
         }
         public override async Task<IEnumerable<Usuario>> GetAllAsync()
@@ -35,6 +43,7 @@ namespace Aplicacion.Repositories
             .ThenInclude(ur => ur.Rol).ToListAsync();
             return users;
         }
+        
 
        
     }

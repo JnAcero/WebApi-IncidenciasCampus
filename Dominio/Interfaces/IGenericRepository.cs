@@ -17,6 +17,7 @@ namespace Dominio.Interfaces
             void Add(T entity);
             void AddRange(IEnumerable<T> entities);
             void Remove(T entity);
+            Task<int> ExecuteDeleteAsync(Expression<Func<T,bool>> expression);
             void RemoveRange(IEnumerable<T> entities);
             void Update(T entity);
         

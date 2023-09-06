@@ -7,6 +7,7 @@ using Dominio.Interfaces;
 using Dominio.Models;
 using Persistencia;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Aplicacion.Repositories
 {
@@ -26,6 +27,11 @@ namespace Aplicacion.Repositories
         public void AddRange(IEnumerable<T> entities)
         {
             _context.AddRange(entities);
+        }
+
+        public async Task<int> ExecuteDeleteAsync(Expression<Func<T, bool>> expression)
+        {
+           return await _context.Set<T>().Where(expression).ExecuteDeleteAsync();
         }
 
         public async Task<IEnumerable<T>> Find(Expression<Func<T, bool>> expression)

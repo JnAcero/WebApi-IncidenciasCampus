@@ -22,7 +22,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApiIncidenciasDbContext>(options =>
 {
-    string ? ConnectionString = builder.Configuration.GetConnectionString("ConexMySqlLocalCampus2");
+    string ? ConnectionString = builder.Configuration.GetConnectionString("ConexMySqlCasa2");
     options.UseMySql(ConnectionString,ServerVersion.AutoDetect(ConnectionString));
 });
 builder.Services.AddAutoMapper(Assembly.GetEntryAssembly());
