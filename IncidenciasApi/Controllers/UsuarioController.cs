@@ -22,16 +22,24 @@ namespace IncidenciasApi.Controllers
             _userService = userService;
         }
         [HttpPost("Registro")]
-        public async Task<dynamic> SignInUser(RegisterDTO registerDto)
+        public async Task<ActionResult> SignInUser(RegisterDTO registerDto)
         {
             var respuesta = await _userService.RegisterAsync(registerDto);
-            return respuesta;
+            if(respuesta.success == false)
+            {
+                return BadRequest(respuesta);
+            }
+            return Ok(respuesta);
         }
         [HttpPost("login")]
-        public async Task<dynamic> LoginUser(LoginDTO loginDto)
+        public async Task<ActionResult> LoginUser(LoginDTO loginDto)
         {
             var respuesta = await _userService.LoginAsync(loginDto);
-            return respuesta;
+             if(respuesta.success == false)
+            {
+                return BadRequest(respuesta);
+            }
+            return Ok(respuesta);
         }
         [HttpGet]  
         [Authorize(Roles="Admin")]

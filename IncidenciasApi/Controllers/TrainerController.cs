@@ -94,7 +94,7 @@ namespace IncidenciasApi.Controllers
         }
         [MapToApiVersion("1.0")]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Trainer>>> GetTrainers()
+        public async Task<ActionResult> GetTrainers()
         {
             var trainers = await _unitOfWork.Trainers.GetAllAsync();
             if (trainers is null)

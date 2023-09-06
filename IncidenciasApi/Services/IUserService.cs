@@ -7,8 +7,8 @@ namespace IncidenciasApi.Services
 {
     public interface IUserService
     {
-        Task<dynamic> RegisterAsync(RegisterDTO registerDTO);
-        Task<dynamic> LoginAsync(LoginDTO loginDTO);
+        Task<IRespuestaDTO> RegisterAsync(RegisterDTO registerDTO);
+        Task<IRespuestaDTO> LoginAsync(LoginDTO loginDTO);
         void UpdateAndSaveUserAsync(Usuario usuario);
         string HashPaswordOfUser(Usuario usuario);
 
