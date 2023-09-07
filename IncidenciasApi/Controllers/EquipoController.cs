@@ -6,6 +6,7 @@ using AutoMapper;
 using Dominio.Interfaces;
 using Dominio.Models;
 using IncidenciasApi.DTOS;
+using IncidenciasApi.Helpers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IncidenciasApi.Controllers
@@ -39,10 +40,22 @@ namespace IncidenciasApi.Controllers
                 SistemaOperativo = x.SistemaOperativo,
                 EspecificacionesTecnicas = x.EspecificacionesTecnicas,
                 SalonId = x.SalonId,
-                Salon = x.Salon != null ? x.Salon.NombreSalon : "Sin información"
+                Salon = x.Salon != null ? x.Salon.NombreSalon : "Sin información",
+                ComponentesHardware = x.ComponentesHardware.Select(ch =>new {id = ch.Id, codigo = ch.Codigo,marca = ch.Marca,estado=ch.Estado,fechaMantenimiento = ch.FechaMantenimiento, tipoHardware = ch.TipoHardware.NombreHardware}).ToList(),
+                ComponentesSoftware = x.EquiposSoftwares.Select(cs =>new{id = cs.SoftwareId,nombre = cs.Software.Nombre,version = cs.Version, fechaActualizacion= cs.FechaActualizacion, tipoSoftware = cs.Software.TipoSoftware}).ToList()
             }).ToList();
           
              return Ok(equiposDtos);
+        }
+
+       
+        [HttpGet("paginacion/V1.1")]
+         [MapToApiVersion("1.1")]
+        public async Task<ActionResult> GetEquiposconPaginacion([FromQuery] Params equipoParams)
+        {
+            var equipos = await _unitOfWork.Equipos.GetAllAsyncPaginacion(equipoParams.PageIndex, equipoParams.PageSize,equipoParams.Search);
+            var paginacionEquipos = new Pager<Equipo>(equipos.registros, equipos.totalRegistros, equipoParams.PageIndex, equipoParams.PageSize, equipoParams.Search);
+            return Ok(paginacionEquipos);
         }
         [HttpPut("{id:int}")]
         public async Task<ActionResult> PutEquipo(EquipoCreationDTO equipoDto,int id)

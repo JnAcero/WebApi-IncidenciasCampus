@@ -8,6 +8,7 @@ using Dominio.Models;
 using IncidenciasApi.DTOS;
 using IncidenciasApi.Helpers;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
@@ -25,14 +26,14 @@ namespace IncidenciasApi.Services
             _unitOfWork = unitOfWork;
             _passwordHasher = passwordHasher;
         }
-        public async Task<dynamic> LoginAsync(LoginDTO loginDTO)
+        public async Task<IRespuestaDTO> LoginAsync(LoginDTO loginDTO)
         {
             var usuario = await _unitOfWork.Usuarios.FindUserByUserName(loginDTO.UserName);
             bool UsuarioIsVerified = VerifyPassword(usuario, loginDTO.Password);
             if (UsuarioIsVerified && (usuario is not null))
             {
                 JwtSecurityToken jwtSecurityToken = CreateJwtToken(usuario);
-                return new
+                return new DatosUsuarioLoginDTO
                 {
                     success = true,
                     message = "Ok,Verificado",
@@ -49,7 +50,7 @@ namespace IncidenciasApi.Services
             }
             else
             {
-                return new
+                return new RespuestaConsultaDTO
                 {
                     success = false,
                     message = "Credenciales incorrectas para el usuario",
@@ -71,7 +72,7 @@ namespace IncidenciasApi.Services
             return passwordVerificationResult == PasswordVerificationResult.Success;
         }
 
-        public async Task<dynamic> RegisterAsync(RegisterDTO registerDTO)
+        public async Task<IRespuestaDTO> RegisterAsync(RegisterDTO registerDTO)
         {
             var usuarioAVerificar = await _unitOfWork.Usuarios.FindUserByUserName(registerDTO.UserName);
             if (usuarioAVerificar is null)
@@ -90,9 +91,11 @@ namespace IncidenciasApi.Services
 
                 if (rolUsuario is null)
                 {
-                    return new
+                    return new RespuestaConsultaDTO
                     {
-                        message = $"El rol con id:{registerDTO.RolId} no existe "
+                        success = false,
+                        message = $"El rol con id:{registerDTO.RolId} no existe ",
+                        result = ""
                     };
                 }
                 var datos_Usuario_Rol = new List<UsuarioRol>(){
@@ -105,7 +108,7 @@ namespace IncidenciasApi.Services
                 usuario.UsuariosRoles.AddRange(datos_Usuario_Rol);
                 _unitOfWork.Usuarios.Add(usuario);
                 await _unitOfWork.Save();
-                return new
+                return new RespuestaConsultaDTO
                 {
                     success = true,
                     message = "Usuario creado exitosamente",
@@ -119,7 +122,7 @@ namespace IncidenciasApi.Services
             }
             else
             {
-                return new
+                return new RespuestaConsultaDTO
                 {
                     success = false,
                     message = "Usuario ya existe",
