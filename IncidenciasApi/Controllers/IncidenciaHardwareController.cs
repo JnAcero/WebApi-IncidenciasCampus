@@ -4,6 +4,7 @@ using Dominio.Interfaces;
 using Dominio.Models;
 using IncidenciasApi.DTOS;
 using IncidenciasApi.Helpers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IncidenciasApi.Controllers
@@ -18,6 +19,7 @@ namespace IncidenciasApi.Controllers
         {
         }
         [HttpPost]
+        [Authorize(Roles="Admin,Trainer")]
         public async Task<ActionResult> PostIncidenciaHardware(IncidenciaHardwareCreationDTO incidenciaHardwareDto)
         {
                 var incidenciaH = new Incidencia(){

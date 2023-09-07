@@ -3,6 +3,7 @@ using AutoMapper;
 using Dominio.Interfaces;
 using Dominio.Models;
 using IncidenciasApi.DTOS;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IncidenciasApi.Controllers
@@ -17,6 +18,7 @@ namespace IncidenciasApi.Controllers
         {
         }
         [HttpPost]
+        [Authorize(Roles="Admin,Trainer")]
         public async Task<ActionResult> PostIncidenciaSoftware(IncidenciaSoftwareCreationDTO incidenciasoftwareDto)
         {
             var inc_Software = _mapper.Map<Incidencia>(incidenciasoftwareDto);
