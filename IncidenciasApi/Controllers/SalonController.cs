@@ -17,6 +17,8 @@ namespace IncidenciasApi.Controllers
         {
         }
         [HttpPost]
+         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> PostSalones(SalonCreationDTO[] salonesDto)
         {
             try{
@@ -35,6 +37,8 @@ namespace IncidenciasApi.Controllers
             }
         }
         [HttpGet]
+         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> GetSalones()
         {
             var salones = await _unitOfWork.Salones.GetAllAsync();
@@ -42,6 +46,8 @@ namespace IncidenciasApi.Controllers
             return Ok(salonesDTO);
         } 
         [HttpPut("{id:int}")]
+         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> EditSalon(int id, SalonCreationDTO salonDto)
         {
             var salon = await _unitOfWork.Salones.GetByIdAsync(id);
@@ -66,6 +72,8 @@ namespace IncidenciasApi.Controllers
         //Version moderna para eliminar de la base de datos, ejecuta una sola query
         [MapToApiVersion("1.1")]
         [HttpDelete("V1.1/{id:int}")]
+         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> DeleteSalon(int id)
         {
             var filasAlteradas = await _unitOfWork.Salones.ExecuteDeleteAsync(x => x.Id == id);

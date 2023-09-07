@@ -10,7 +10,7 @@ namespace IncidenciasApi.Helpers
         private int _pageSize = 5;
         private const int MaxPageSize = 50;
         private int _pageIndex = 1;
-        private string ?_search;
+        private string _search;
 
         public int PageSize{
             get => _pageSize;

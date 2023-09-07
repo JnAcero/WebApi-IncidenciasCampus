@@ -20,6 +20,8 @@ namespace IncidenciasApi.Controllers
         {
         }
         [HttpPost("varios")]
+         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> PostSoftwaresEquipos(SoftwareEquipoCreationDTO[] softwaresEquiposDtos)
         { 
             var softwaresEquipos = _mapper.Map<EquipoSoftware[]>(softwaresEquiposDtos);

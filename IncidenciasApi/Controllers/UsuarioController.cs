@@ -22,6 +22,8 @@ namespace IncidenciasApi.Controllers
             _userService = userService;
         }
         [HttpPost("Registro")]
+         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> SignInUser(RegisterDTO registerDto)
         {
             var respuesta = await _userService.RegisterAsync(registerDto);
@@ -32,6 +34,8 @@ namespace IncidenciasApi.Controllers
             return Ok(respuesta);
         }
         [HttpPost("login")]
+         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> LoginUser(LoginDTO loginDto)
         {
             var respuesta = await _userService.LoginAsync(loginDto);
@@ -43,12 +47,16 @@ namespace IncidenciasApi.Controllers
         }
         [HttpGet]  
         [Authorize(Roles="Admin")]
+         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> GetAllUsers()
         {
             var users= await _unitOfWork.Usuarios.GetAllAsync();
             return Ok(_mapper.Map<GetUsuarioDto[]>(users));
         }
         [HttpPut("{id:int}")]
+         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> PutUser(int id, EditUsuarioDTO editUsuarioDto)
         {
             Usuario existingUser = await _unitOfWork.Usuarios.GetByIdAsync(id);
@@ -64,6 +72,8 @@ namespace IncidenciasApi.Controllers
         }
 
         [HttpDelete("{id:int}")]
+         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> DeleteSalon(int id)
         {
             var filasAlteradas = await _unitOfWork.Usuarios.ExecuteDeleteAsync(x => x.Id == id);

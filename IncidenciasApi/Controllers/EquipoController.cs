@@ -23,6 +23,8 @@ namespace IncidenciasApi.Controllers
         }
         [HttpPost("varios")]
         [Authorize(Roles="Admin,Trainer")]
+         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> PostEquipos(EquipoCreationDTO[] equiposDto)
         {
             var equipos = _mapper.Map<Equipo[]>(equiposDto);
@@ -31,6 +33,8 @@ namespace IncidenciasApi.Controllers
             return Ok(equipos);
         }
         [HttpGet]
+         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> GetEquiposDtos()
         {
             var equipos = await _unitOfWork.Equipos.GetAllAsync();
@@ -53,6 +57,8 @@ namespace IncidenciasApi.Controllers
        
         [HttpGet("paginacion/V1.1")]
          [MapToApiVersion("1.1")]
+          [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> GetEquiposconPaginacion([FromQuery] Params equipoParams)
         {
             var equipos = await _unitOfWork.Equipos.GetAllAsyncPaginacion(equipoParams.PageIndex, equipoParams.PageSize,equipoParams.Search);
@@ -74,6 +80,8 @@ namespace IncidenciasApi.Controllers
             
         }
         [HttpDelete("{id:int}")]
+         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> DeleteEquipo(int id)
         {
             var equipo =await  _unitOfWork.Equipos.Find(x => x.Id == id);

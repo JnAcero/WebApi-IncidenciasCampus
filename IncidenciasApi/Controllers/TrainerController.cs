@@ -22,6 +22,8 @@ namespace IncidenciasApi.Controllers
         }
 
         [HttpPost]
+         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> PostTrainer(TrainerCreationDTO trainerDto)
         {
             var trainer = _mapper.Map<Trainer>(trainerDto);
@@ -31,6 +33,8 @@ namespace IncidenciasApi.Controllers
             return Ok();
         }
         [HttpPost("varios")]
+         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> PostTrainers(TrainerCreationDTO[] trainersDto)
         {
             try
@@ -51,6 +55,8 @@ namespace IncidenciasApi.Controllers
             }
         }
         [HttpPut("{id:int}")]
+         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<Trainer>> PutTrainer(int id, TrainerCreationDTO trainerDto)
         {
             var trainer = _mapper.Map<Trainer>(trainerDto);
@@ -60,6 +66,8 @@ namespace IncidenciasApi.Controllers
             return Ok(trainer);
         }
         [HttpDelete]
+         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> DeleteTrainer(int id)
         {
             var trainer = await _unitOfWork.Trainers.GetTrainerById(id);
@@ -73,6 +81,8 @@ namespace IncidenciasApi.Controllers
 
         }
         [HttpGet("{id:int}")]
+         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<Trainer>>> GetTrainers(int id)
         {
             var trainers = await _unitOfWork.Trainers.Find(x => x.Id == id);
@@ -83,6 +93,8 @@ namespace IncidenciasApi.Controllers
             return Ok(trainers);
         }
         [HttpGet("{nombre}")]
+         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<Trainer>>> GetTrainersByName(string nombre)
         {
             var trainers = await _unitOfWork.Trainers.Find(x => x.Nombres.Contains(nombre));
@@ -94,6 +106,8 @@ namespace IncidenciasApi.Controllers
         }
         [MapToApiVersion("1.0")]
         [HttpGet]
+         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> GetTrainers()
         {
             var trainers = await _unitOfWork.Trainers.GetAllAsync();

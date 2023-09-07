@@ -19,6 +19,8 @@ namespace IncidenciasApi.Controllers
         }
         [HttpPost]
         [Authorize(Roles="Admin,Trainer")]
+         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> PostIncidenciaSoftware(IncidenciaSoftwareCreationDTO incidenciasoftwareDto)
         {
             var inc_Software = _mapper.Map<Incidencia>(incidenciasoftwareDto);
@@ -43,6 +45,8 @@ namespace IncidenciasApi.Controllers
 
         }
         [HttpGet]
+         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<Incidencia>>> GetIncidenciasSoftware()
         {
             var incidencias = await _unitOfWork.Incidencias.GetIncidenciasSoftware();
@@ -53,6 +57,8 @@ namespace IncidenciasApi.Controllers
             return Ok(incidencias);
         }
         [HttpGet("getById/{id:int}")]
+         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<Incidencia>> GetIncidenciaSoftwareById(int id)
         {
             var incidencia = await _unitOfWork.Incidencias.GetIncidenciasSoftwareById(id);

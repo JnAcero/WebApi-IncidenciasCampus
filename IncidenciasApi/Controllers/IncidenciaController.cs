@@ -18,6 +18,8 @@ namespace IncidenciasApi.Controllers
         {
         }
         [HttpGet("getByIdTrainer/{id:int}")]
+         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<Incidencia>>> GetIncidenciasByTrainer(int id)
         {
             var incidencias = await _unitOfWork.Incidencias.GetIncidenciasByIdTrainer(id);
@@ -28,6 +30,8 @@ namespace IncidenciasApi.Controllers
             
         }
         [HttpGet("getByIdSalon/{id:int}")]
+         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<Incidencia>>> GetIncidenciasByIdSalon(int id)
         {
                var incidencias = await _unitOfWork.Incidencias.GetIncideciasByIdSalon(id);
@@ -37,6 +41,8 @@ namespace IncidenciasApi.Controllers
                return Ok(incidencias);
         }
         [HttpPut("{id:int}/estado")]
+         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<Incidencia>> PutEstadoIncidencia(int id,PutIncidenciaDTO estadoIncidenciaDto)
         {
             var incidencia = await _unitOfWork.Incidencias.GetIncidenciaById(id);
@@ -49,6 +55,8 @@ namespace IncidenciasApi.Controllers
         }
         
         [HttpDelete("{id:int}")]
+         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> DeleteSalon(int id)
         {
             var filasAlteradas = await _unitOfWork.Incidencias.ExecuteDeleteAsync(x => x.Id == id);

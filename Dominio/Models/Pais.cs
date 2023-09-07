@@ -11,7 +11,5 @@ namespace Dominio.Models
        [MaxLength(50)]
         public string Nombre { get; set; }=null!;
         public ICollection<Dpto> Dptos { get; set; } = new List<Dpto>();
-
-        
     }
 }

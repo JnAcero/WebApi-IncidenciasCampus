@@ -24,6 +24,8 @@ namespace Aplicacion.UnitOfWork
         private RolRepository _roles;
         private UsuarioRolRepository _usuariosRoles;
         private AreaRepository _areas;
+        private CiudadRepository _ciudades;
+        private DeptoRepository _dptos;
 
 
         public UnitOfWork(ApiIncidenciasDbContext context)
@@ -129,6 +131,20 @@ namespace Aplicacion.UnitOfWork
             get{
                 _areas ??= new AreaRepository(_context);
                 return _areas;
+            }
+        }
+
+        public ICiudad Ciudades{
+            get{
+                _ciudades ??= new CiudadRepository(_context);
+                return _ciudades;
+            }
+        }
+
+        public IDpto Departamentos{
+            get{
+                _dptos ??= new DeptoRepository(_context);
+                return _dptos;
             }
         }
         public void Dispose()

@@ -52,6 +52,11 @@ namespace IncidenciasApi.Perfiles
                 .ForMember(a =>a.Id, opc =>opc.MapFrom(src =>src.AreaId))
                 .ReverseMap();
 
+            CreateMap<CiudadCreationDTO,Ciudad>()
+                .ForMember(c =>c.DptoId,opc =>opc.MapFrom(src => src.DepartamentoId))
+                .ReverseMap();
+            CreateMap<DptoCreationDTO,Dpto>().ReverseMap();
+
 
         }
     }
