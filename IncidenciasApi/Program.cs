@@ -11,7 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.ConfigCores();
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options => options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull);
 builder.Services.AddAplicationServices();
 builder.Services.AddJwt(builder.Configuration);
 builder.Services.ConfigureRateLimiting();
@@ -22,7 +23,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApiIncidenciasDbContext>(options =>
 {
-    string ? ConnectionString = builder.Configuration.GetConnectionString("ConexMySqlLocalCampus2");
+    string ? ConnectionString = builder.Configuration.GetConnectionString("ConexMySqlCasa2");
     options.UseMySql(ConnectionString,ServerVersion.AutoDetect(ConnectionString));
 });
 builder.Services.AddAutoMapper(Assembly.GetEntryAssembly());

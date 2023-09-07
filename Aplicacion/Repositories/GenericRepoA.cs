@@ -8,7 +8,7 @@ using Persistencia;
 
 namespace Aplicacion.Repositories
 {
-    public class GenericRepoA<T> : IGenericRepoA<T>
+    public class GenericRepoA<T> : IGenericRepoA<T> where T : class
     {
         private readonly ApiIncidenciasDbContext _context;
 
@@ -19,12 +19,12 @@ namespace Aplicacion.Repositories
 
         public void Add(T entity)
         {
-            _context.Add(entity);
+            _context.Set<T>().Add(entity);
         }
 
         public void AddRange(IEnumerable<T> entities)
         {
-            _context.AddRange(entities);
+            _context.Set<T>().AddRange(entities);
         }
 
         public IEnumerable<T> Find(Expression<Func<T, bool>> expression)

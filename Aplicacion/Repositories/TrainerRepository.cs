@@ -39,7 +39,9 @@ namespace Aplicacion.Repositories
          {
             return await _context.Trainers
             .Include(t =>t.EmailsTrainer)
+               .ThenInclude(et =>et.TipoEmail)
             .Include(t =>t.TelefonosTrainer)
+               .ThenInclude(tt =>tt.TipoTelefono)
             .Include(t =>t.ContactosTrainers)
             .ToListAsync();
          }

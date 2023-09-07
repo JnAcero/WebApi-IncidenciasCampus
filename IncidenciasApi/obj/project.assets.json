@@ -6019,11 +6019,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\IncidenciasApi\\IncidenciasApi.csproj",
+      "projectUniqueName": "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\IncidenciasApi\\IncidenciasApi.csproj",
       "projectName": "IncidenciasApi",
-      "projectPath": "c:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\IncidenciasApi\\IncidenciasApi.csproj",
+      "projectPath": "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\IncidenciasApi\\IncidenciasApi.csproj",
       "packagesPath": "C:\\Users\\Juan Acero\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\IncidenciasApi\\obj\\",
+      "outputPath": "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\IncidenciasApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Juan Acero\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -6039,8 +6039,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "c:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Aplicacion\\Aplicacion.csproj": {
-              "projectPath": "c:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Aplicacion\\Aplicacion.csproj"
+            "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Aplicacion\\Aplicacion.csproj": {
+              "projectPath": "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Aplicacion\\Aplicacion.csproj"
             }
           }
         }

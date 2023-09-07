@@ -16,7 +16,7 @@ namespace IncidenciasApi.DTOS
         public string? EspecificacionesTecnicas { get; set; }
         public int SalonId { get; set; }
         public string Salon { get; set; }
-        public IEnumerable<object> ComponentesHardware { get; set; }
-        public IEnumerable<object> ComponentesSoftware { get; set; }
+        public List<object> ComponentesHardware { get; set; }
+        public List<object> ComponentesSoftware { get; set; }
     }
 }

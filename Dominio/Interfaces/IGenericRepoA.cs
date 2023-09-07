@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio.Interfaces
 {
-    public interface IGenericRepoA<T>
+    public interface IGenericRepoA<T> where T : class
     {
         
             Task<T> GetByIdAsync(int id);

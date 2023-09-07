@@ -23,21 +23,11 @@ namespace IncidenciasApi.Controllers
 
         [HttpPost("varios")]
         public async Task<ActionResult> PostEmails(EmailTrainerCreationDTO[] emailsTrainerDtos)
-        {
-            try {
+        { 
             var emailsTrainer = _mapper.Map<EmailTrainer[]>(emailsTrainerDtos);
             _unitOfWork.EmailsTrainers.AddRange(emailsTrainer);
             await _unitOfWork.Save();
-            return Ok();
-
-            }catch(Exception ex){
-                var response  = new ErrorMessage(){
-                     Message = "Ha ocurrido un problema con la creacion de las entidades",
-                    ErrorCode = 500
-                };
-                return StatusCode(500,response);
-            }
-            
+            return Ok();  
         }
     }
 }

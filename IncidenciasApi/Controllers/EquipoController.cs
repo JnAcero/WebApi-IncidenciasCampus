@@ -29,10 +29,10 @@ namespace IncidenciasApi.Controllers
             return Ok(equipos);
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<EquipoDto>>> GetEquiposDtos()
+        public async Task<ActionResult> GetEquiposDtos()
         {
             var equipos = await _unitOfWork.Equipos.GetAllAsync();
-            var equiposDtos =  equipos.Select(x => new EquipoDto
+            var equiposDtos =  equipos.Select(x => new
             {
                 Id = x.Id,
                 Codigo = x.Codigo,
@@ -41,8 +41,8 @@ namespace IncidenciasApi.Controllers
                 EspecificacionesTecnicas = x.EspecificacionesTecnicas,
                 SalonId = x.SalonId,
                 Salon = x.Salon != null ? x.Salon.NombreSalon : "Sin información",
-                ComponentesHardware = x.ComponentesHardware.Select(ch =>new {id = ch.Id, codigo = ch.Codigo,marca = ch.Marca,estado=ch.Estado,fechaMantenimiento = ch.FechaMantenimiento, tipoHardware = ch.TipoHardware.NombreHardware}).ToList(),
-                ComponentesSoftware = x.EquiposSoftwares.Select(cs =>new{id = cs.SoftwareId,nombre = cs.Software.Nombre,version = cs.Version, fechaActualizacion= cs.FechaActualizacion, tipoSoftware = cs.Software.TipoSoftware}).ToList()
+                ComponentesHardware = x.ComponentesHardware.Select(ch =>new {id = ch.Id, codigo = ch.Codigo,marca = ch.Marca,estado=ch.Estado,fechaMantenimiento = ch.FechaMantenimiento, tipoHardware = ch.TipoHardware.NombreHardware}),
+                ComponentesSoftware =x.EquiposSoftwares.Select(cs =>new{id = cs.SoftwareId,nombre = cs.Software.Nombre,version = cs.Version, fechaActualizacion= cs.FechaActualizacion, tipoSoftware = cs.Software.TipoSoftware})
             }).ToList();
           
              return Ok(equiposDtos);

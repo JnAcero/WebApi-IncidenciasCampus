@@ -42,10 +42,10 @@ namespace IncidenciasApi.Services
                         Id = usuario.Id,
                         nombreUsuario = usuario.NombreUsuario,
                         email = usuario.Email,
-                         usuariosRoles = usuario.UsuariosRoles,
-                    },
+                        rol = string.Join(',',GetRolesUsuario(usuario)),
+                        token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken)
+                    }
                    
-                    token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken)
                 };
             }
             else
@@ -105,7 +105,8 @@ namespace IncidenciasApi.Services
                             Rol = rolUsuario
                         }
                     };
-                usuario.UsuariosRoles.AddRange(datos_Usuario_Rol);
+               // usuario.UsuariosRoles.AddRange(datos_Usuario_Rol);
+               usuario.UsuariosRoles.AddRange(datos_Usuario_Rol);
                 _unitOfWork.Usuarios.Add(usuario);
                 await _unitOfWork.Save();
                 return new RespuestaConsultaDTO
@@ -169,6 +170,15 @@ namespace IncidenciasApi.Services
         public string HashPaswordOfUser(Usuario usuario)
         {
             return usuario.Password =  _passwordHasher.HashPassword(usuario, usuario.Password);
+        }
+        private List<string> GetRolesUsuario(Usuario usuario)
+        {
+            var rolesUsuario =new List<string>();
+                foreach(var user in usuario.UsuariosRoles)
+                {
+                    rolesUsuario.Add(user.Rol.Nombre);
+                }
+                return rolesUsuario;
         }
 
 

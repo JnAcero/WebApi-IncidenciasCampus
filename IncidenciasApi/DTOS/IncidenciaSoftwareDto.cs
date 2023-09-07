@@ -8,7 +8,7 @@ namespace IncidenciasApi.DTOS
     public class IncidenciaSoftwareDto
     {
        
-        public int SoftwareId { get; set; }
+        public int EquipoSoftwareId { get; set; }
         public string Descripcion { get; set; }=null!;
     }
 }

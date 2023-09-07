@@ -4764,11 +4764,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj",
+      "projectUniqueName": "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj",
       "projectName": "Dominio",
-      "projectPath": "c:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj",
+      "projectPath": "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Dominio\\Dominio.csproj",
       "packagesPath": "C:\\Users\\Juan Acero\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Dominio\\obj\\",
+      "outputPath": "C:\\Users\\Juan Acero\\Documents\\Campus\\WebApi-IncidenciasCampus\\Dominio\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Juan Acero\\AppData\\Roaming\\NuGet\\NuGet.Config"

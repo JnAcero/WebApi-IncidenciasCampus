@@ -8,7 +8,7 @@ namespace IncidenciasApi.DTOS
     public class TelefonoTrainerCreationDTO
     {
         public int TrainerId { get; set; }
-         public int TipoEmailId { get; set; }
+         public int TipoTelefonoId { get; set; }
          public string NumeroTelefono { get; set; }=null!;
         
     }

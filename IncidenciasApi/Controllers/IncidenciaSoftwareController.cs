@@ -31,7 +31,7 @@ namespace IncidenciasApi.Controllers
             {
                 var SoftwareIncidencia = new IncidenciaSoftware(){
                    IncidenciaId = IdTemporal,
-                   SoftwareId = item.SoftwareId,
+                   SoftwareId = item.EquipoSoftwareId,
                    Descripcion = item.Descripcion
                 };
                 _unitOfWork.SoftwaresIncidencias.Add(SoftwareIncidencia);
